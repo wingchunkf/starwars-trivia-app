@@ -1,5 +1,13 @@
+$green-blue-med: #257ca3;
+$green-blue-lt: #a2d2df;
+$green-blue-dk: #396d7c;
+$grey-med: #708090;
+$grey-dk: #36454f;
+$white: #f7f7f7;
+
+
 header {
-    background-color:#257ca3;
+    background-color: $green-blue-med;
     color: white;
     height: 15rem;
     margin-right: -15px;
@@ -58,11 +66,22 @@ button {
 button.get-stats.btn.btn-lg {
     border-radius: 0;
     opacity: 1;
-    margin-top: 3rem;    
+    margin-top: 3rem;     
+    background: $green-blue-med;
+    color: $white;  
+    font-family: 'Ubuntu', sans-serif;
+    -webkit-transition: background-color 0.5s; 
+    transition: background-color 0.5s;  
+}
+
+button.get-stats.btn.btn-lg:hover {
+    background: $white;
+    color: $green-blue-med;
+    border: 1px solid $green-blue-med;
 }
 
 footer {
-    background-color:#247ca3;
+    background-color: $green-blue-med;
     color: white;
     height: 20rem;
 }
