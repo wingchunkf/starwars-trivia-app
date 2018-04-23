@@ -15,108 +15,121 @@
     <div class="container-fluid">
         <header>
             <div class="text-center pt-5">
-                <h1>STAR WARS STATISTICS</h1>
-                <h2>Want to know more about Star Wars?</h2>
-                <h5>Search people, planets, species, starships, vehicles, and films</h5>
+                <h1 class="py-4">STAR WARS STATS</h1>
+                <hr>
+
+                <div class="row d-flex justify-content-around pb-5">
+                    <div class="col-lg-3 col-12 question1">
+                        <img src="sw-icons/png/deathstar.png" class="sw-icons">
+                        <p class="pt-4">How many credits did it cost to build the Death Star?</p>
+                    </div>
+                    <div class="col-lg-3 col-12 question2">
+                        <img src="sw-icons/png/r2d2.png" class="sw-icons">
+                        <p class="pt-4">When was R2D2 "born"?</p>
+                    </div>
+                    <div class="col-lg-3 col-12 question3">
+                        <img src="sw-icons/png/falcon.png" class="sw-icons">
+                        <p class="pt-4">Who built the Millenium Falcon?</p>
+                    </div>
+                </div>
             </div>
         </header>
 
         <main>
             <!-- these search boxes will pop up after user clicks on 'search people' -->
 
-            <div class="row text-center d-flex justify-content-center py-5">
-                <div class="col-lg-3">
-                    <h3 class="p-3">Characters</h3>
-                    <div class="div1row1 characters">
-
-                        <p class="eyes"></p>
-                        <p class="skin"></p>
-
-                    </div>
-                    <div class="mx-auto">
-                        <button class="btn btn-lg get-stats py-3 px-5">Get Stats</button>
-                    </div>
-                    <input placeholder="search by person" id="searchInput">
-                    <button id="searchPerson">Search</button>
+        <div class="row text-center d-flex justify-content-center py-5">
+            <div class="col-lg-3">
+                <h3 class="p-3">Characters</h3>
+                <div class="div1row1 characters">
+                    <p class="eyes"></p>
+                    <p class="skin"></p>
                 </div>
-
-                <div class="col-lg-3">
-                    <h3 class="p-3">Species</h3>
-                    <div class="div2row1 species">
-                        <p class="eyes"></p>
-                        <p class="skin"></p>
-                    </div>
-                    <div class="mx-auto">
-                        <button class="btn btn-lg get-stats py-3 px-5">Get Stats</button>
-                    </div>
-                    <input placeholder="search by species" id="searchInput">
-                    <button id="">Search</button>
-                </div>
-
-                <div class="col-lg-3">
-                    <h3 class="p-3">Planets</h3>
-                    <div class="div3row1 planets">
-                        <p class="eyes"></p>
-                        <p class="skin"></p>
-                    </div>
-                    <div class="mx-auto">
-                    <button class="btn btn-lg get-stats py-3 px-5">Get Stats</button>
-                    </div>
-                    <input placeholder="search by planet" id="searchInput">
-                    <button id="">Search</button>
-                </div>
-            </div>
-
-            <div class="row text-center d-flex justify-content-center pb-5">
-                <div class="col-lg-3">
-                    <h3 class="p-3">Starships</h3>
-                    <div class="div1row2 starships">
-                        <p class="eyes"></p>
-                        <p class="skin"></p>
-                    </div>
-                    <div class="mx-auto">
-                    <button class="btn btn-lg get-stats py-3 px-5">Get Stats</button>
-                </div>
-                    <input placeholder="search by starship" id="searchInput">
-                    <button id="">Search</button>
-                </div>
-
-                <div class="col-lg-3">
-                    <h3 class="p-3">Vehicles</h3>
-                    <div class="div2row2 vehicles">
-                        <p class="eyes"></p>
-                        <p class="skin"></p>
-                    </div>
                 <div class="mx-auto">
                     <button class="btn btn-lg get-stats py-3 px-5">Get Stats</button>
                 </div>
-                    <input placeholder="search by vehicle" id="searchInput">
-                    <button id="">Search</button>
-                </div>
+                <input placeholder="search by person" id="searchInput">
+                <button id="searchPerson">Search</button>
+            </div>
 
-                <div class="col-lg-3">
-                    <h3 class="p-3">Films</h3>
-                    <div class="div3row2 films">
-                        <p class="eyes"></p>
-                        <p class="skin"></p>
-                    </div>
-                    <div class="mx-auto">
+            <div class="col-lg-3">
+                <h3 class="p-3">Species</h3>
+                <div class="div2row1 species">
+                    <p class="eyes"></p>
+                    <p class="skin"></p>
+                </div>
+                <div class="mx-auto">
                     <button class="btn btn-lg get-stats py-3 px-5">Get Stats</button>
                 </div>
-                    <input placeholder="search by films" id="searchInput">
-                    <button id="">Search</button>
+                <input placeholder="search by species" id="searchInput">
+                <button id="">Search</button>
+            </div>
+
+            <div class="col-lg-3">
+                <h3 class="p-3">Planets</h3>
+                <div class="div3row1 planets">
+                    <p class="eyes"></p>
+                    <p class="skin"></p>
                 </div>
-            </main>
+                <div class="mx-auto">
+                    <button class="btn btn-lg get-stats py-3 px-5">Get Stats</button>
+                </div>
+                <input placeholder="search by planet" id="searchInput">
+                <button id="">Search</button>
+            </div>
         </div>
 
-        <footer>
-            this is my footer
-        </footer>
+        <div class="row text-center d-flex justify-content-center pb-5">
+            <div class="col-lg-3">
+                <h3 class="p-3">Starships</h3>
+                <div class="div1row2 starships">
+                    <p class="eyes"></p>
+                    <p class="skin"></p>
+                </div>
+                <div class="mx-auto">
+                    <button class="btn btn-lg get-stats py-3 px-5">Get Stats</button>
+                </div>
+                <input placeholder="search by starship" id="searchInput">
+                <button id="">Search</button>
+            </div>
 
-<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="main.js"></script>
+            <div class="col-lg-3">
+                <h3 class="p-3">Vehicles</h3>
+                <div class="div2row2 vehicles">
+                    <p class="eyes"></p>
+                    <p class="skin"></p>
+                </div>
+                <div class="mx-auto">
+                    <button class="btn btn-lg get-stats py-3 px-5">Get Stats</button>
+                </div>
+                <input placeholder="search by vehicle" id="searchInput">
+                <button id="">Search</button>
+            </div>
+
+            <div class="col-lg-3">
+                <h3 class="p-3">Films</h3>
+                <div class="div3row2 films">
+                    <p class="eyes"></p>
+                    <p class="skin"></p>
+                </div>
+                <div class="mx-auto">
+                    <button class="btn btn-lg get-stats py-3 px-5">Get Stats</button>
+                </div>
+                <input placeholder="search by films" id="searchInput">
+                <button id="">Search</button>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        this is my footer
+    </footer>
+
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="main.js"></script>
 
 </body>
+
 </html>

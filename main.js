@@ -29,6 +29,23 @@ searchPerson.addEventListener("click", function () {
             })
         })
 
-        
+// fade in function for questions in header
+
+document.addEventListener('DOMContentLoaded', function() {         
+
+var firstQuestion = document.querySelector('.question1');
+var secondQuestion = document.querySelector('.question2');
+var thirdQuestion = document.querySelector('.question3');
+
+    firstQuestion.classList.add('fadeOne');
+    secondQuestion.classList.add('fadeTwo');
+    thirdQuestion.classList.add('fadeThree');
+    firstQuestion.style.transitionDelay = "0.75s";
+    secondQuestion.style.transitionDelay = "1.50s";
+    thirdQuestion.style.transitionDelay = "2.25s";
+});
+
+
+
 
 
