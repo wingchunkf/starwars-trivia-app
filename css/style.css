@@ -1,0 +1,56 @@
+header {
+  background-color: #257ca3;
+  color: white;
+  height: 15rem;
+  margin-right: -15px;
+  margin-left: -15px; }
+
+.div1row1, .div2row1, .div3row1, .div1row2, .div2row2, .div3row2 {
+  height: 24rem;
+  box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.2); }
+
+.characters {
+  background-image: url(../img/yoda.png);
+  background-size: cover; }
+
+.starships {
+  background-image: url(../img/starships.jpg);
+  background-size: cover; }
+
+.planets {
+  background-image: url(../img/planet2.jpg);
+  background-size: cover;
+  background-position: 80% 0; }
+
+.vehicles {
+  background-image: url(../img/at-at.jpg);
+  background-size: cover; }
+
+.films {
+  background-image: url(../img/films.jpg);
+  background-size: cover; }
+
+.species {
+  background-image: url(../img/species.jpg);
+  background-size: cover; }
+
+h3 {
+  box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.2);
+  color: #708090; }
+
+input#searchInput {
+  margin-top: 2rem;
+  opacity: 0; }
+
+button {
+  opacity: 0; }
+
+button.get-stats.btn.btn-lg {
+  border-radius: 0;
+  opacity: 1;
+  margin-top: 3rem; }
+
+footer {
+  background-color: #247ca3;
+  color: white;
+  height: 20rem; }

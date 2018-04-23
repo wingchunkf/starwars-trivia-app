@@ -1,0 +1,18 @@
+{
+  "name": "kungfu-movie-lookup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Christine Bergman",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.1"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}
