@@ -48,9 +48,19 @@ button {
 button.get-stats.btn.btn-lg {
   border-radius: 0;
   opacity: 1;
-  margin-top: 3rem; }
+  margin-top: 3rem;
+  background: #257ca3;
+  color: #f7f7f7;
+  font-family: 'Ubuntu', sans-serif;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s; }
+
+button.get-stats.btn.btn-lg:hover {
+  background: #f7f7f7;
+  color: #257ca3;
+  border: 1px solid #257ca3; }
 
 footer {
-  background-color: #247ca3;
+  background-color: #257ca3;
   color: white;
   height: 20rem; }
