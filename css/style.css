@@ -1,9 +1,46 @@
 header {
-  background-color: #257ca3;
+  background: #257ca3;
+  background-size: cover;
   color: white;
-  height: 15rem;
   margin-right: -15px;
-  margin-left: -15px; }
+  margin-left: -15px;
+  font-family: 'Ubuntu', sans-serif; }
+
+h1 {
+  transition: all 0.4s ease-in-out;
+  font-size: 80px; }
+
+h1:hover {
+  transform: scale(1.1); }
+
+hr {
+  border-color: #f7f7f7;
+  width: 50%;
+  padding-bottom: 3rem; }
+
+.question1, .question2, .question3 {
+  opacity: 0;
+  color: #f7f7f7;
+  padding: 1.25rem 0;
+  width: 50%; }
+
+.question1 p, .question2 p, .question3 p {
+  font-size: 110%; }
+
+.answer1, .answer2, .answer3 {
+  opacity: 0; }
+
+.sw-icons {
+  color: white;
+  width: 3rem; }
+
+.fadeIn {
+  opacity: 1;
+  transition: opacity 2.25s ease-in-out; }
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 2.25s ease-in-out; }
 
 .div1row1, .div2row1, .div3row1, .div1row2, .div2row2, .div3row2 {
   height: 24rem;
@@ -34,16 +71,19 @@ header {
   background-image: url(../img/species.jpg);
   background-size: cover; }
 
+.characters, .starships, .planets, .vehicles, .films, .species {
+  transition: all 0.4s ease-in-out; }
+
+.characters:hover, .starships:hover, .planets:hover, .vehicles:hover, .films:hover, .species:hover {
+  transform: scale(1.2); }
+
 h3 {
   box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.2);
   color: #708090; }
 
-input#searchInput {
+input#searchCharacters {
   margin-top: 2rem;
-  opacity: 0; }
-
-button {
-  opacity: 0; }
+  opacity: 1; }
 
 button.get-stats.btn.btn-lg {
   border-radius: 0;
