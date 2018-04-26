@@ -7,8 +7,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
+            crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+            crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css">
     </head>
 
@@ -38,98 +40,119 @@
             </div>
         </header>
 
-        <main class="main-content">           
+        <main class="main-content">
 
-        <div class="row text-center d-flex justify-content-center py-5">
-            <div class="col-lg-3">
-                <h3 class="p-3">Characters</h3>
-                <div class="div1row1 characters">
-                    <p class="eyes"></p>
-                    <p class="skin"></p>
-                </div>
-                <div class="mx-auto">
-                    <button class="btn btn-lg get-stats char-stats py-3 px-5">Get Stats</button>
-                </div>
-                <input placeholder="search by person" class="searchCharInput">
-                <button class="searchCharacters">Search</button>
-            </div>
+            <div class="row text-center d-flex justify-content-center py-5">
+                <div class="col-lg-3">
+                    <h3 class="p-3">Characters</h3>
+                    <div class="div1row1 characters">
+                        <p class="eyes"></p>
+                        <p class="skin"></p>
+                    </div>
 
-            <div class="col-lg-3">
-                <h3 class="p-3">Species</h3>
-                <div class="div2row1 species">
-                    <p class="eyes"></p>
-                    <p class="skin"></p>
+                    <div class="mx-auto">
+                        <button class="btn btn-lg get-stats char-stats py-3 px-5">Get Stats</button>
+                    </div>
+
                 </div>
-                <div class="mx-auto">
-                    <button class="btn btn-lg get-stats species-stats py-3 px-5">Get Stats</button>
-                </div>
-                <!-- <input placeholder="search by species" id="searchSpecies">
+
+                <div class="col-lg-3">
+                    <h3 class="p-3">Species</h3>
+                    <div class="div2row1 species">
+                        <p class="eyes"></p>
+                        <p class="skin"></p>
+                    </div>
+                    <div class="mx-auto">
+                        <button class="btn btn-lg get-stats species-stats py-3 px-5">Get Stats</button>
+                    </div>
+                    <!-- <input placeholder="search by species" id="searchSpecies">
                 <button id="">Search</button> -->
+                </div>
+
+                <div class="col-lg-3">
+                    <h3 class="p-3">Planets</h3>
+                    <div class="div3row1 planets">
+                        <p class="eyes"></p>
+                        <p class="skin"></p>
+                    </div>
+                    <div class="mx-auto">
+                        <button class="btn btn-lg get-stats planet-stats py-3 px-5">Get Stats</button>
+                    </div>
+                    <!-- <input placeholder="search by planet" id="searchPlanets">
+                <button id="">Search</button> -->
+                </div>
             </div>
 
-            <div class="col-lg-3">
-                <h3 class="p-3">Planets</h3>
-                <div class="div3row1 planets">
-                    <p class="eyes"></p>
-                    <p class="skin"></p>
-                </div>
-                <div class="mx-auto">
-                    <button class="btn btn-lg get-stats planet-stats py-3 px-5">Get Stats</button>
-                </div>
-                <!-- <input placeholder="search by planet" id="searchPlanets">
+            <div class="row text-center d-flex justify-content-center pb-5">
+                <div class="col-lg-3">
+                    <h3 class="p-3">Starships</h3>
+                    <div class="div1row2 starships">
+                        <p class="eyes"></p>
+                        <p class="skin"></p>
+                    </div>
+                    <div class="mx-auto">
+                        <button class="btn btn-lg get-stats starship-stats py-3 px-5">Get Stats</button>
+                    </div>
+                    <!-- <input placeholder="search by starship" id="searchStarships">
                 <button id="">Search</button> -->
-            </div>
-        </div>
+                </div>
 
-        <div class="row text-center d-flex justify-content-center pb-5">
-            <div class="col-lg-3">
-                <h3 class="p-3">Starships</h3>
-                <div class="div1row2 starships">
-                    <p class="eyes"></p>
-                    <p class="skin"></p>
-                </div>
-                <div class="mx-auto">
-                    <button class="btn btn-lg get-stats starship-stats py-3 px-5">Get Stats</button>
-                </div>
-                <!-- <input placeholder="search by starship" id="searchStarships">
+                <div class="col-lg-3">
+                    <h3 class="p-3">Vehicles</h3>
+                    <div class="div2row2 vehicles">
+                        <p class="eyes"></p>
+                        <p class="skin"></p>
+                    </div>
+                    <div class="mx-auto">
+                        <button class="btn btn-lg get-stats vehicle-stats py-3 px-5">Get Stats</button>
+                    </div>
+                    <!-- <input placeholder="search by vehicle" id="searchVehicles">
                 <button id="">Search</button> -->
-            </div>
+                </div>
 
-            <div class="col-lg-3">
-                <h3 class="p-3">Vehicles</h3>
-                <div class="div2row2 vehicles">
-                    <p class="eyes"></p>
-                    <p class="skin"></p>
-                </div>
-                <div class="mx-auto">
-                    <button class="btn btn-lg get-stats vehicle-stats py-3 px-5">Get Stats</button>
-                </div>
-                <!-- <input placeholder="search by vehicle" id="searchVehicles">
+                <div class="col-lg-3">
+                    <h3 class="p-3">Films</h3>
+                    <div class="div3row2 films">
+                        <p class="eyes"></p>
+                        <p class="skin"></p>
+                    </div>
+                    <div class="mx-auto">
+                        <button class="btn btn-lg get-stats py-3 px-5">Get Stats</button>
+                    </div>
+                    <!-- <input placeholder="search by films" id="searchFilms">
                 <button id="">Search</button> -->
-            </div>
+                </div>
 
-            <div class="col-lg-3">
-                <h3 class="p-3">Films</h3>
-                <div class="div3row2 films">
-                    <p class="eyes"></p>
-                    <p class="skin"></p>
-                </div>
-                <div class="mx-auto">
-                    <button class="btn btn-lg get-stats py-3 px-5">Get Stats</button>
-                </div>
-                <!-- <input placeholder="search by films" id="searchFilms">
-                <button id="">Search</button> -->
-            </div>
         </main>
-    </div>
 
-    <footer>
+        <div class="api-container">
 
-        <div class="text-center">
-            <p>Many thanks to Ken Nguyen and Johnny Morrow, the creators of the <strong>amazing</strong> artwork shown above.</p>
-            <p>App built by Christine Bergman &copy;2018</p>
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <input type="text" class="searchCharInput h-50 w-25 mb-5 mr-3">
+                    <button class="searchCharacters api-call btn btn-lg h-50 px-5">Search</button>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-center">
+                <div class="api-response col-lg-6 mx-auto p-5">
+                </div>
+            </div>
+            <div class="backHome">
+                <button class="btn btn-lg back">Back</button>
+            </div>
         </div>
-    </footer>
+        <!-- main background image and area for API data  -->
+
+        <footer>
+
+            <div class="text-center">
+                <p>Many thanks to Ken Nguyen and Johnny Morrow, the creators of the
+                    <strong>amazing</strong> artwork shown above.</p>
+                <p>App built by Christine Bergman &copy;2018</p>
+            </div>
+        </footer>
+        </div>
 
         <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
