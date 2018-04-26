@@ -85,11 +85,12 @@ h3 {
   box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.2);
   color: #708090; }
 
-input#searchCharacters {
-  margin-top: 2rem;
-  opacity: 1; }
+input.searchCharInput {
+  opacity: 1;
+  padding: 0.5rem;
+  margin-top: 3rem; }
 
-button.get-stats.btn.btn-lg {
+button.get-stats.btn.btn-lg, button.api-call.btn.btn-lg, button.back.btn.btn-lg {
   border-radius: 0;
   opacity: 1;
   margin-top: 3rem;
@@ -99,10 +100,13 @@ button.get-stats.btn.btn-lg {
   -webkit-transition: background-color 0.5s;
   transition: background-color 0.5s; }
 
-button.get-stats.btn.btn-lg:hover {
+button.get-stats.btn.btn-lg:hover, button.api-call.btn.btn-lg:hover, button.btn.btn-lg.back:hover {
   background: #f7f7f7;
   color: #257ca3;
   border: 1px solid #257ca3; }
+
+button.btn.btn-lg.back {
+  padding: 10px 30px; }
 
 .api-container {
   background-image: url(../img/xwingfaded.jpg);
@@ -113,6 +117,49 @@ button.get-stats.btn.btn-lg:hover {
   height: 0;
   margin-right: -15px;
   margin-left: -15px; }
+
+.data-div {
+  height: 30rem;
+  box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.3);
+  height: 0; }
+
+.api-response {
+  line-height: 2.8;
+  text-align: center;
+  text-justify: left;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.3rem; }
+
+.api-response p {
+  overflow: hidden;
+  border-right: .15em solid transparent;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .15em;
+  animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+  color: black;
+  font-weight: bold;
+  box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.3); }
+
+@keyframes typing {
+  from {
+    width: 0; }
+  to {
+    width: 100%; } }
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent; }
+  50% {
+    border-color: transparent; } }
+
+.backHome {
+  width: 100%;
+  position: absolute;
+  bottom: 15px;
+  display: inline-block;
+  text-align: center;
+  color: #f7f7f7; }
 
 footer {
   background-color: #257ca3;
