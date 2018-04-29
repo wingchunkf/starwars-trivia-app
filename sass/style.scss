@@ -5,6 +5,11 @@ $grey-med: #708090;
 $grey-dk: #36454f;
 $white: #f7f7f7;
 
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
 @mixin vertical-align($position: relative) {
     position: $position;
     top: 50%;
@@ -21,27 +26,40 @@ header {
     color: white;    
     margin-right: -15px;
     margin-left: -15px;
-    font-family: 'Ubuntu', sans-serif;    
+    font-family: 'Ubuntu', sans-serif;  
+    height: 15rem;  
 }
 
 h1 {
     transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
     font-size: 80px;
+    color: $white;
 }
 
 h1:hover {
+    -moz-transform: scale(1.1);
     transform: scale(1.1);
 }
 
-hr {
-    border-color: $white;
-    width: 50%;
-    padding-bottom: 3rem;
+.move-up {
+    animation: move 8s;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
 }
+
+@keyframes move {
+    0%, 100% {
+      transform: translate(0, 0);    
+    }
+    100% {
+      transform: translate(0, -200px);
+    }
+  }
 
 .question1, .question2, .question3 {
     opacity: 0;
-    color: $white;   
+    color: $grey-med;  
     padding: 1.25rem 0;
     width: 50%;
 }
@@ -54,9 +72,8 @@ hr {
     opacity: 0;
 }
 
-.sw-icons {
-    color: white;
-    width: 3rem;
+.sw-icons {    
+    width: 3rem;    
 }
 
 .fadeIn {
@@ -125,13 +142,55 @@ h3 {
     color: #708090;    
 }
 
-input.searchCharInput {
+input.searchCharInput, input.searchSpeciesInput {
     opacity: 1;
     padding: 0.5rem;   
-    margin-top: 3rem;    
+    margin-top: 3rem; 
+    font-family: 'Ubuntu';
+    font-size: 110%;   
 }
 
-button.get-stats.btn.btn-lg, button.api-call.btn.btn-lg, button.back.btn.btn-lg {
+.searchCharInput::-webkit-input-placeholder { 
+    color:$grey-med;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 110%;
+    text-align: center;
+}
+::-moz-placeholder {
+    color: $grey-med;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 110%;
+    text-align: center;
+}
+:-ms-input-placeholder { 
+    color: $grey-med;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 110%;
+    text-align: center;
+}
+:-moz-placeholder {
+    color: $grey-med;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 110%;
+    text-align: center;
+}
+
+.searchCharInput:focus::-webkit-input-placeholder, 
+
+.searchCharInput:focus::-webkit-input-placeholder { 
+    color:transparent; 
+}
+.searchCharInput:focus:-moz-placeholder { 
+    color:transparent; 
+} 
+.searchCharInput:focus::-moz-placeholder { 
+    color:transparent; 
+} 
+.searchCharInput:focus:-ms-input-placeholder { 
+    color:transparent; 
+} 
+
+button.char-stats.btn.btn-lg, button.api-call.btn.btn-lg, button.back.btn.btn-lg {
     border-radius: 0;
     opacity: 1;
     margin-top: 3rem;     
@@ -152,7 +211,28 @@ button.btn.btn-lg.back {
     padding: 10px 30px;
 }
 
-.api-container {
+button.btn.btn-lg {
+    border-radius: 0;
+    opacity: 1;
+    margin-top: 3rem;     
+    background: $green-blue-med;
+    color: $white;  
+    font-family: 'Ubuntu', sans-serif;
+    -webkit-transition: background-color 0.5s; 
+    transition: background-color 0.5s; 
+}
+
+button.btn.btn-lg:hover {
+    background: $white;
+    color: $green-blue-med;
+    border: 1px solid $green-blue-med;
+}
+
+button.btn.btn-lg.back {
+    padding: 10px 30px;
+}
+
+.api-container-char, .api-container-species, .api-container-planets, .api-container-starships, .api-container-vehicles, .api-container-films {
     background-image: url(../img/xwingfaded.jpg);
     background-size: cover;
     opacity: 0;
@@ -169,7 +249,7 @@ button.btn.btn-lg.back {
     height: 0;       
 }
 
-.api-response { 
+.api-response-char, .api-response-species, .api-response-planets, .api-response-starships, .api-response-vehicles, .api-response-films { 
     line-height: 2.8;
     text-align: center;
     text-justify: left;
@@ -177,7 +257,7 @@ button.btn.btn-lg.back {
     font-size: 1.3rem;     
 }
 
-.api-response p {    
+.api-response-char p, .api-response-species p, .api-response-planets p, .api-response-starships p, .api-response-starships p, .api-response-vehicles p, .api-response-films p {    
     overflow: hidden;
     border-right: .15em solid transparent;
     white-space: nowrap;
@@ -215,4 +295,5 @@ footer {
     height: 20rem;
     margin-left: -15px;
     margin-right: -15px;
+    width: 100%;
 }

@@ -1,26 +1,31 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
 header {
   background: #257ca3;
   background-size: cover;
   color: white;
   margin-right: -15px;
   margin-left: -15px;
-  font-family: 'Ubuntu', sans-serif; }
+  font-family: 'Ubuntu', sans-serif;
+  height: 15rem; }
 
 h1 {
-  transition: all 0.4s ease-in-out;
-  font-size: 80px; }
+  color: #f7f7f7; }
 
-h1:hover {
-  transform: scale(1.1); }
+.move-up {
+  animation: move 8s;
+  animation-fill-mode: forwards;
+  animation-direction: normal; }
 
-hr {
-  border-color: #f7f7f7;
-  width: 50%;
-  padding-bottom: 3rem; }
+@keyframes move {
+  0%, 100% {
+    transform: translate(0, 0); } }
 
 .question1, .question2, .question3 {
   opacity: 0;
-  color: #f7f7f7;
+  color: #708090;
   padding: 1.25rem 0;
   width: 50%; }
 
@@ -31,7 +36,6 @@ hr {
   opacity: 0; }
 
 .sw-icons {
-  color: white;
   width: 3rem; }
 
 .fadeIn {
@@ -85,12 +89,51 @@ h3 {
   box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.2);
   color: #708090; }
 
-input.searchCharInput {
+input.searchCharInput, input.searchSpeciesInput {
   opacity: 1;
   padding: 0.5rem;
-  margin-top: 3rem; }
+  margin-top: 3rem;
+  font-family: 'Ubuntu';
+  font-size: 110%; }
 
-button.get-stats.btn.btn-lg, button.api-call.btn.btn-lg, button.back.btn.btn-lg {
+.searchCharInput::-webkit-input-placeholder {
+  color: #708090;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 110%;
+  text-align: center; }
+
+::-moz-placeholder {
+  color: #708090;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 110%;
+  text-align: center; }
+
+:-ms-input-placeholder {
+  color: #708090;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 110%;
+  text-align: center; }
+
+:-moz-placeholder {
+  color: #708090;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 110%;
+  text-align: center; }
+
+.searchCharInput:focus::-webkit-input-placeholder,
+.searchCharInput:focus::-webkit-input-placeholder {
+  color: transparent; }
+
+.searchCharInput:focus:-moz-placeholder {
+  color: transparent; }
+
+.searchCharInput:focus::-moz-placeholder {
+  color: transparent; }
+
+.searchCharInput:focus:-ms-input-placeholder {
+  color: transparent; }
+
+button.btn.btn-lg {
   border-radius: 0;
   opacity: 1;
   margin-top: 3rem;
@@ -100,7 +143,7 @@ button.get-stats.btn.btn-lg, button.api-call.btn.btn-lg, button.back.btn.btn-lg 
   -webkit-transition: background-color 0.5s;
   transition: background-color 0.5s; }
 
-button.get-stats.btn.btn-lg:hover, button.api-call.btn.btn-lg:hover, button.btn.btn-lg.back:hover {
+button.btn.btn-lg:hover {
   background: #f7f7f7;
   color: #257ca3;
   border: 1px solid #257ca3; }
@@ -108,7 +151,7 @@ button.get-stats.btn.btn-lg:hover, button.api-call.btn.btn-lg:hover, button.btn.
 button.btn.btn-lg.back {
   padding: 10px 30px; }
 
-.api-container {
+.api-container-char, .api-container-species, .api-container-planets, .api-container-starships, .api-container-vehicles, .api-container-films {
   background-image: url(../img/xwingfaded.jpg);
   background-size: cover;
   opacity: 0;
@@ -123,14 +166,14 @@ button.btn.btn-lg.back {
   box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.3);
   height: 0; }
 
-.api-response {
+.api-response-char, .api-response-species, .api-response-planets, .api-response-starships, .api-response-vehicles, .api-response-films {
   line-height: 2.8;
   text-align: center;
   text-justify: left;
   font-family: 'Ubuntu', sans-serif;
   font-size: 1.3rem; }
 
-.api-response p {
+.api-response-char p, .api-response-species p, .api-response-planets p, .api-response-starships p, .api-response-starships p, .api-response-vehicles p, .api-response-films p {
   overflow: hidden;
   border-right: .15em solid transparent;
   white-space: nowrap;
@@ -166,4 +209,5 @@ footer {
   color: white;
   height: 20rem;
   margin-left: -15px;
-  margin-right: -15px; }
+  margin-right: -15px;
+  width: 100%; }
