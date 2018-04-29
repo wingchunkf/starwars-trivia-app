@@ -8,38 +8,43 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
             crossorigin="anonymous">
-        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     </head>
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="app">
         <header>
-            <div class="text-center pt-5">
-                <h1 class="py-4">STAR WARS STATS</h1>
-                <hr>
 
-                <div class="row d-flex justify-content-around pb-5 question-section">
-                    <div class="col-lg-3 col-12 question1">
-                        <img src="sw-icons/png/deathstar.png" class="sw-icons">
-                        <p class="pt-4">How many credits did it cost to build the Death Star?</p>
-                        <p class="answer1">1,000,000,000,000</p>
-                    </div>
-                    <div class="col-lg-3 col-12 question2">
-                        <img src="sw-icons/png/r2d2.png" class="sw-icons">
-                        <p class="pt-4">When was R2D2 "born"?</p>
-                        <p class="answer2">some year</p>
-                    </div>
-                    <div class="col-lg-3 col-12 question3">
-                        <img src="sw-icons/png/falcon.png" class="sw-icons">
-                        <p class="pt-4">Who built the Millenium Falcon?</p>
-                        <p class="answer3">answer answer</p>
-                    </div>
-                </div>
-            </div>
+            <h1 class="pt-5 text-center">STAR WARS STATS</h1>
+
         </header>
 
+        <section class="sw-icon-section">
+            <div class="row d-flex justify-content-around py-5 question-section">
+                <div class="col-1"></div>
+                <div class="col-lg-3 col-12 question1 text-center">
+                    <img src="sw-icons/png/deathstarblue.jpg" class="sw-icons">
+                    <p class="pt-4">How many credits did it cost to build the Death Star?</p>
+                    <p class="answer1">1,000,000,000,000</p>
+                </div>
+                <div class="col-lg-3 col-12 question2 text-center">
+                    <img src="sw-icons/png/r2d2blue.jpg" class="sw-icons">
+                    <p class="pt-4">When was R2D2 "born"?</p>
+                    <p class="answer2">some year</p>
+                </div>
+                <div class="col-lg-3 col-12 question3 text-center">
+                    <img src="sw-icons/png/falconblue.jpg" class="sw-icons">
+                    <p class="pt-4">Who built the Millenium Falcon?</p>
+                    <p class="answer3">answer answer</p>
+                </div>
+                <div class="col-1"></div>
+            </div>
+    </div>
+    </section>
+
+    <div class='wrapper'>
         <main class="main-content">
 
             <div class="row text-center d-flex justify-content-center py-5">
@@ -125,26 +130,137 @@
 
         </main>
 
-        <div class="api-container">
+        <!-- api container - search by character -->
 
+        <div class="api-container-char">
             <div class="row">
                 <div class="col d-flex justify-content-center">
-                    <input type="text" class="searchCharInput h-50 w-25 mb-5 mr-3">
+                    <input type="text" placeholder="Search by character" class="searchCharInput h-50 w-25 mb-5 mr-3">
                     <button class="searchCharacters api-call btn btn-lg h-50 px-5">Search</button>
                 </div>
             </div>
 
             <div class="row d-flex justify-content-center">
-                <div class="api-response col-lg-6 mx-auto p-5">
+                <div class="api-response-char col-lg-6 mx-auto p-5">
                 </div>
             </div>
             <div class="backHome">
                 <button class="btn btn-lg back">Back</button>
             </div>
         </div>
+
+        <!-- end api for character search -->
+
         <!-- main background image and area for API data  -->
 
-        <footer>
+        <!-- api container - search by species -->
+
+        <div class="api-container-species">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <input placeholder="Search by species" class="h-50 w-25 mb-5 mr-3 species-input-search">
+                    <button class="search-species api-call btn btn-lg h-50 px-5">Search</button>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-center">
+                <div class="api-response-species col-lg-6 mx-auto p-5">
+                </div>
+            </div>
+            <div class="backHome">
+                <button class="btn btn-lg back">Back</button>
+            </div>
+        </div>
+
+        <!-- end api for species search -->
+
+        <!-- api container - search by planets -->
+
+        <div class="api-container-planets">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <input type="text" placeholder="Search by planet" class="searchPlanetsInput h-50 w-25 mb-5 mr-3">
+                    <button class="searchPlanets api-call btn btn-lg h-50 px-5">Search</button>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-center">
+                <div class="api-response-planets col-lg-6 mx-auto p-5">
+                </div>
+            </div>
+            <div class="backHome">
+                <button class="btn btn-lg back">Back</button>
+            </div>
+        </div>
+
+        <!-- end api container for planet search -->
+
+        <!-- api container for search by starship -->
+
+        <div class="api-container-starships">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <input type="text" placeholder="Search by starship" class="searchStarshipInput h-50 w-25 mb-5 mr-3">
+                    <button class="searchStarships api-call btn btn-lg h-50 px-5">Search</button>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-center">
+                <div class="api-response-starships col-lg-6 mx-auto p-5">
+                </div>
+            </div>
+            <div class="backHome">
+                <button class="btn btn-lg back">Back</button>
+            </div>
+        </div>
+
+        <!-- end api container for starship search -->
+
+        <!-- api container - vehicle search -->
+
+        <div class="api-container-vehicles">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <input type="text" placeholder="Search by vehicle" class="searchVehiclesInput h-50 w-25 mb-5 mr-3">
+                    <button class="searchVehicles api-call btn btn-lg h-50 px-5">Search</button>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-center">
+                <div class="api-response-vehicles col-lg-6 mx-auto p-5">
+                </div>
+            </div>
+            <div class="backHome">
+                <button class="btn btn-lg back">Back</button>
+            </div>
+        </div>
+
+        <!-- end api container for vehicle search -->
+
+        <!-- api container for search by film -->
+
+        <div class="api-container-films">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <input type="text" placeholder="Search by filmr" class="searchFilmsInput h-50 w-25 mb-5 mr-3">
+                    <button class="searchFilms api-call btn btn-lg h-50 px-5">Search</button>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-center">
+                <div class="api-response-films col-lg-6 mx-auto p-5">
+                </div>
+            </div>
+            <div class="backHome">
+                <button class="btn btn-lg back">Back</button>
+            </div>
+        </div>
+
+        <!-- end api container for search by film -->
+
+        </div>
+
+        <footer class="container-fluid">
 
             <div class="text-center">
                 <p>Many thanks to Ken Nguyen and Johnny Morrow, the creators of the
@@ -152,12 +268,13 @@
                 <p>App built by Christine Bergman &copy;2018</p>
             </div>
         </footer>
-        </div>
 
-        <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script src="vue.js"></script>
+
 
 </body>
 
