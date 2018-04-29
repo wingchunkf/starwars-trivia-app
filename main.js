@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // enable ability to go back to home page from second page
 
-var backButton = document.querySelector('.backHome');
+var backButton = document.querySelector('.back');
     
 backButton.addEventListener("click", function() {
     location.reload(true);
