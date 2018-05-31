@@ -8,13 +8,31 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style.css">     
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
             crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> 
+        <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">    
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
     </head>
 
-    <div class="container-fluid" id="app">
+    <div class="container-fluid">
         <header>
 
             <h1 class="pt-5 text-center">STAR WARS STATS</h1>
@@ -32,29 +50,33 @@
                 <div class="col-lg-3 col-12 question2 text-center">
                     <img src="sw-icons/png/r2d2blue.jpg" class="sw-icons">
                     <p class="pt-4">When was R2D2 "born"?</p>
-                    <p class="answer2">some year</p>
+                    <p class="answer2">33BBY</p>
                 </div>
                 <div class="col-lg-3 col-12 question3 text-center">
                     <img src="sw-icons/png/falconblue.jpg" class="sw-icons">
                     <p class="pt-4">Who built the Millenium Falcon?</p>
-                    <p class="answer3">answer answer</p>
+                    <p class="answer3">The Corellian Engineering Corporation</p>
                 </div>
                 <div class="col-1"></div>
             </div>
     </div>
     </section>
 
+    <!-- <div id="app" @click="alertMe()" >
+        {{ message }}
+    
+    </div> -->
+
     <div class='wrapper'>
+
         <main class="main-content">
 
             <div class="row text-center d-flex justify-content-center py-5">
                 <div class="col-lg-3">
                     <h3 class="p-3">Characters</h3>
                     <div class="div1row1 characters">
-                        <p class="eyes"></p>
-                        <p class="skin"></p>
-                    </div>
 
+                    </div>
                     <div class="mx-auto">
                         <button class="btn btn-lg get-stats char-stats py-3 px-5">Get Stats</button>
                     </div>
@@ -64,8 +86,6 @@
                 <div class="col-lg-3">
                     <h3 class="p-3">Species</h3>
                     <div class="div2row1 species">
-                        <p class="eyes"></p>
-                        <p class="skin"></p>
                     </div>
                     <div class="mx-auto">
                         <button class="btn btn-lg get-stats species-stats py-3 px-5">Get Stats</button>
@@ -77,14 +97,12 @@
                 <div class="col-lg-3">
                     <h3 class="p-3">Planets</h3>
                     <div class="div3row1 planets">
-                        <p class="eyes"></p>
-                        <p class="skin"></p>
+
                     </div>
                     <div class="mx-auto">
                         <button class="btn btn-lg get-stats planet-stats py-3 px-5">Get Stats</button>
                     </div>
-                    <!-- <input placeholder="search by planet" id="searchPlanets">
-                <button id="">Search</button> -->
+
                 </div>
             </div>
 
@@ -92,188 +110,91 @@
                 <div class="col-lg-3">
                     <h3 class="p-3">Starships</h3>
                     <div class="div1row2 starships">
-                        <p class="eyes"></p>
-                        <p class="skin"></p>
                     </div>
                     <div class="mx-auto">
                         <button class="btn btn-lg get-stats starship-stats py-3 px-5">Get Stats</button>
                     </div>
-                    <!-- <input placeholder="search by starship" id="searchStarships">
-                <button id="">Search</button> -->
+
                 </div>
 
                 <div class="col-lg-3">
                     <h3 class="p-3">Vehicles</h3>
                     <div class="div2row2 vehicles">
-                        <p class="eyes"></p>
-                        <p class="skin"></p>
                     </div>
                     <div class="mx-auto">
                         <button class="btn btn-lg get-stats vehicle-stats py-3 px-5">Get Stats</button>
                     </div>
-                    <!-- <input placeholder="search by vehicle" id="searchVehicles">
-                <button id="">Search</button> -->
+
                 </div>
 
                 <div class="col-lg-3">
                     <h3 class="p-3">Films</h3>
                     <div class="div3row2 films">
-                        <p class="eyes"></p>
-                        <p class="skin"></p>
+
                     </div>
                     <div class="mx-auto">
-                        <button class="btn btn-lg get-stats py-3 px-5">Get Stats</button>
+                        <button class="btn btn-lg get-stats film-stats py-3 px-5">Get Stats</button>
                     </div>
-                    <!-- <input placeholder="search by films" id="searchFilms">
-                <button id="">Search</button> -->
-                </div>
 
+                </div>
         </main>
+        </div>
 
         <!-- api container - search by character -->
+        <div id="app">
+            <div class="api-container">
+                <div class="row">
+                    <div class="col d-flex justify-content-center">
+                        <input type="text" placeholder="Search by character" name="char" ref="inputChar" class="searchCharInput charInput h-50 w-25 mb-5 mr-3">
+                        <input type="text" placeholder="Search by species" name="species" class="searchCharInput speciesInput h-50 w-25 mb-5 mr-3">
+                        <input type="text" placeholder="Search by planet" name="planets" class="searchCharInput planetInput h-50 w-25 mb-5 mr-3">
+                        <input type="text" placeholder="Search by starship" name="starships" class="searchCharInput starshipInputField h-50 w-25 mb-5 mr-3">
+                        <input type="text" placeholder="Search by vehicle" name="vehicles" class="searchCharInput vehicleInput h-50 w-25 mb-5 mr-3">
+                        <input type="text" placeholder="Search by films" name="films" class="searchCharInput filmInput h-50 w-25 mb-5 mr-3">
 
-        <div class="api-container-char">
-            <div class="row">
-                <div class="col d-flex justify-content-center">
-                    <input type="text" placeholder="Search by character" class="searchCharInput h-50 w-25 mb-5 mr-3">
-                    <button class="searchCharacters api-call btn btn-lg h-50 px-5">Search</button>
+
+                        <button class="searchCharacters charInput searchButtonChar api-call btn btn-lg h-50 px-5">Search</button>
+                        <button class="searchCharacters speciesInput searchButtonSpecies api-call btn btn-lg h-50 px-5">Search</button>
+                        <button class="searchCharacters planetInput searchButtonPlanets api-call btn btn-lg h-50 px-5">Search</button>
+                        <button class="searchCharacters searchButtonStarships api-call btn btn-lg h-50 px-5">Search</button>
+                        <button class="searchCharacters searchButtonVehicles api-call btn btn-lg h-50 px-5">Search</button>
+                        <button class="searchCharacters searchButtonFilms api-call btn btn-lg h-50 px-5">Search</button>
+
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center">
+                    <div class="api-response col-lg-8 mx-auto p-5">
+
+                    </div>
                 </div>
             </div>
 
-            <div class="row d-flex justify-content-center">
-                <div class="api-response-char col-lg-6 mx-auto p-5">
+            <!-- end api for character search -->
+
+            <!-- </div> -->
+            
+            <button id="fake"></button>
+
+            <footer class="container-fluid">
+
+                <div class="col text-center">
+                    <p class="pt-5">Special thanks go to Ken Nguyen and Johnny Morrow, the creators of the
+                        <strong>amazing</strong> work displayed in this app.</p>
+                        <p>~ Art so beautiful it makes you love Star Wars all over again.</p>
+                    <p class="pt-4 paul">* Thanks also to Paul Hallett, creator of the Star Wars API that made this app possible.</p>
                 </div>
-            </div>
-            <div class="backHome">
-                <button class="btn btn-lg back">Back</button>
-            </div>
-        </div>
-
-        <!-- end api for character search -->
-
-        <!-- main background image and area for API data  -->
-
-        <!-- api container - search by species -->
-
-        <div class="api-container-species">
-            <div class="row">
-                <div class="col d-flex justify-content-center">
-                    <input placeholder="Search by species" class="h-50 w-25 mb-5 mr-3 species-input-search">
-                    <button class="search-species api-call btn btn-lg h-50 px-5">Search</button>
+                <div class="col copyright text-center">
+                    <p class="contact-info"><i class="fas fa-envelope"></i>&nbsp;Questions or comments? I can be reached <a href="mailto:bergmcj12@gmail.com" target="_top">here</a>
+                    <p>App built by Christine Bergman &copy;2018</p>
                 </div>
-            </div>
+            </footer>
 
-            <div class="row d-flex justify-content-center">
-                <div class="api-response-species col-lg-6 mx-auto p-5">
-                </div>
-            </div>
-            <div class="backHome">
-                <button class="btn btn-lg back">Back</button>
-            </div>
-        </div>
-
-        <!-- end api for species search -->
-
-        <!-- api container - search by planets -->
-
-        <div class="api-container-planets">
-            <div class="row">
-                <div class="col d-flex justify-content-center">
-                    <input type="text" placeholder="Search by planet" class="searchPlanetsInput h-50 w-25 mb-5 mr-3">
-                    <button class="searchPlanets api-call btn btn-lg h-50 px-5">Search</button>
-                </div>
-            </div>
-
-            <div class="row d-flex justify-content-center">
-                <div class="api-response-planets col-lg-6 mx-auto p-5">
-                </div>
-            </div>
-            <div class="backHome">
-                <button class="btn btn-lg back">Back</button>
-            </div>
-        </div>
-
-        <!-- end api container for planet search -->
-
-        <!-- api container for search by starship -->
-
-        <div class="api-container-starships">
-            <div class="row">
-                <div class="col d-flex justify-content-center">
-                    <input type="text" placeholder="Search by starship" class="searchStarshipInput h-50 w-25 mb-5 mr-3">
-                    <button class="searchStarships api-call btn btn-lg h-50 px-5">Search</button>
-                </div>
-            </div>
-
-            <div class="row d-flex justify-content-center">
-                <div class="api-response-starships col-lg-6 mx-auto p-5">
-                </div>
-            </div>
-            <div class="backHome">
-                <button class="btn btn-lg back">Back</button>
-            </div>
-        </div>
-
-        <!-- end api container for starship search -->
-
-        <!-- api container - vehicle search -->
-
-        <div class="api-container-vehicles">
-            <div class="row">
-                <div class="col d-flex justify-content-center">
-                    <input type="text" placeholder="Search by vehicle" class="searchVehiclesInput h-50 w-25 mb-5 mr-3">
-                    <button class="searchVehicles api-call btn btn-lg h-50 px-5">Search</button>
-                </div>
-            </div>
-
-            <div class="row d-flex justify-content-center">
-                <div class="api-response-vehicles col-lg-6 mx-auto p-5">
-                </div>
-            </div>
-            <div class="backHome">
-                <button class="btn btn-lg back">Back</button>
-            </div>
-        </div>
-
-        <!-- end api container for vehicle search -->
-
-        <!-- api container for search by film -->
-
-        <div class="api-container-films">
-            <div class="row">
-                <div class="col d-flex justify-content-center">
-                    <input type="text" placeholder="Search by filmr" class="searchFilmsInput h-50 w-25 mb-5 mr-3">
-                    <button class="searchFilms api-call btn btn-lg h-50 px-5">Search</button>
-                </div>
-            </div>
-
-            <div class="row d-flex justify-content-center">
-                <div class="api-response-films col-lg-6 mx-auto p-5">
-                </div>
-            </div>
-            <div class="backHome">
-                <button class="btn btn-lg back">Back</button>
-            </div>
-        </div>
-
-        <!-- end api container for search by film -->
-
-        </div>
-
-        <footer class="container-fluid">
-
-            <div class="text-center">
-                <p>Many thanks to Ken Nguyen and Johnny Morrow, the creators of the
-                    <strong>amazing</strong> artwork shown above.</p>
-                <p>App built by Christine Bergman &copy;2018</p>
-            </div>
-        </footer>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="main.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-        <script src="vue.js"></script>
+            <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/all.js" integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR"
+                crossorigin="anonymous"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+            <script src="main.js"></script>
 
 
 </body>

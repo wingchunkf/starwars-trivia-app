@@ -42,20 +42,20 @@ h1:hover {
     transform: scale(1.1);
 }
 
-.move-up {
-    animation: move 8s;
-    animation-fill-mode: forwards;
-    animation-direction: normal;
-}
+// .move-up {
+//     animation: move 8s;
+//     animation-fill-mode: forwards;
+//     animation-direction: normal;
+// }
 
 @keyframes move {
     0%, 100% {
-      transform: translate(0, 0);    
+    transform: translate(0, 0);    
     }
     100% {
-      transform: translate(0, -200px);
-    }
-  }
+    transform: translate(0, -200px);
+    }   
+}
 
 .question1, .question2, .question3 {
     opacity: 0;
@@ -78,12 +78,20 @@ h1:hover {
 
 .fadeIn {
     opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
     transition: opacity 2.25s ease-in-out;
 }
 
 .fadeOut {
     opacity: 0;
     transition: opacity 2.25s ease-in-out;
+}
+
+.move-up {
+    animation: move 5.9s;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
 }
 
 // ** end header **
@@ -141,13 +149,16 @@ h3 {
     box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.2);
     color: #708090;    
 }
-
-input.searchCharInput, input.searchSpeciesInput {
+input.searchCharInput{
     opacity: 1;
     padding: 0.5rem;   
     margin-top: 3rem; 
     font-family: 'Ubuntu';
     font-size: 110%;   
+}
+
+.charInput, .speciesInput, .planetInput, .starshipInputField, .vehicleInput, .filmInput, .searchButtonChar, .searchButtonPlanets, .searchButtonSpecies, .searchButtonStarships, .searchButtonVehicles, .searchButtonFilms {
+    display: none;
 }
 
 .searchCharInput::-webkit-input-placeholder { 
@@ -226,13 +237,14 @@ button.btn.btn-lg:hover {
     background: $white;
     color: $green-blue-med;
     border: 1px solid $green-blue-med;
+    outline: none;
 }
 
 button.btn.btn-lg.back {
     padding: 10px 30px;
 }
 
-.api-container-char, .api-container-species, .api-container-planets, .api-container-starships, .api-container-vehicles, .api-container-films {
+.api-container {
     background-image: url(../img/xwingfaded.jpg);
     background-size: cover;
     opacity: 0;
@@ -244,12 +256,12 @@ button.btn.btn-lg.back {
 }
 
 .data-div {   
-    height: 30rem;    
+    height: 40rem;    
     box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.3);  
     height: 0;       
 }
 
-.api-response-char, .api-response-species, .api-response-planets, .api-response-starships, .api-response-vehicles, .api-response-films { 
+.api-response { 
     line-height: 2.8;
     text-align: center;
     text-justify: left;
@@ -257,7 +269,7 @@ button.btn.btn-lg.back {
     font-size: 1.3rem;     
 }
 
-.api-response-char p, .api-response-species p, .api-response-planets p, .api-response-starships p, .api-response-starships p, .api-response-vehicles p, .api-response-films p {    
+.api-response p {    
     overflow: hidden;
     border-right: .15em solid transparent;
     white-space: nowrap;
@@ -267,7 +279,9 @@ button.btn.btn-lg.back {
     blink-caret .75s step-end infinite;
     color: black;
     font-weight: bold;
-    box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.3);      
+    box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.3);   
+    position: relative;     
+    padding: 1rem 0;
 }  
 
 @keyframes typing {
@@ -280,11 +294,9 @@ from, to { border-color: transparent; }
 50% { border-color: transparent; }
 }
 
-.backHome {
-    width: 100%;
+.home-link {   
     position: absolute;    
-    bottom: 15px; 
-    display: inline-block;
+    bottom: 1.25rem;
     text-align: center; 
     color: $white;
 }
@@ -296,4 +308,30 @@ footer {
     margin-left: -15px;
     margin-right: -15px;
     width: 100%;
+    position: relative;
 }
+
+footer p {
+    font-size: 110%;
+}
+
+footer p.paul {
+    font-size: 100%;
+}
+
+footer .contact-info a {
+    text-decoration: none;
+    color: white;
+
+}
+
+footer .contact-info a:hover {
+    opacity: 0.6;
+}
+
+.copyright {
+    bottom: 10px;
+    position: absolute;    
+}
+
+
