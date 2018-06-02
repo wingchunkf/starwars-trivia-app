@@ -43,11 +43,11 @@ function speech() {
     }, 400);
 }
 
-function dataNotFound() {
+function dataNotFound() {   
     setTimeout(function () {
         var speech = new SpeechSynthesisUtterance("Sorry, no data found");
         speechSynthesis.speak(speech);
-    }, 200);
+    }, 200);        
 }
 
 function pleaseEnterSearch() {
@@ -105,16 +105,25 @@ API CALL BY CHARACTER
         var userSearchChar = charInputField.value;
         var peopleUrl = "https://swapi.co/api/people/";
         var queryChar = '?search=' + userSearchChar;
-
+        
         axios.get(peopleUrl + queryChar)
-            .then(function (response) {                
+            .then(function (response) {   
+                
+                if (response.data.count !== 1) {
 
+                    dataNotFound(); 
+                    apiResponseDiv.style.opacity = 0;
+                    charInputField.value = "";
+                } else {
+                
                 apiResponseDiv.innerHTML = "<p>Full name: " + response.data.results[0].name + " </p>" + "<p>Birth year: " + response.data.results[0].birth_year + " </p>" +
                     "<p>Eye color: " + response.data.results[0].eye_color + " </p>" + "<p>Skin color: " + response.data.results[0].skin_color + " </p>" + "<p>Hair color: " + response.data.results[0].hair_color + " </p>" +
                     "<p>Height: " + response.data.results[0].height + " cm </p>";
 
-                charInputField.value = "";
-            })
+                        speech();
+                        charInputField.value = "";
+                }
+            })                  
     }
 /* --------------------------------------------------------------
 CHARACTER SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
@@ -122,11 +131,13 @@ CHARACTER SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
 
         searchChar.addEventListener('click', function () {
         
-            if (charInputField.value !== "") {
-                apiCallChar();
-                speech();
+            if (charInputField.value !== "") {            
+                apiCallChar();                
+
             } else {
                 pleaseEnterSearch();
+                charInputField.value = "";
+                return false;
             }
         })
 
@@ -171,12 +182,22 @@ function apiCallSpecies() {
     axios.get(speciesUrl + querySpecies)
         .then(function (response) {
 
+            if (response.data.count !== 1) {
+
+                dataNotFound(); 
+                apiResponseDiv.style.opacity = 0;
+                speciesInputField.value = "";
+            } else {
+
             apiResponseDiv.innerHTML = "<p>Designation: " + response.data.results[0].designation + " </p>" + "<p>Classification: " + response.data.results[0].classification + " </p>" +
                 "<p>Language: " + response.data.results[0].language + " </p>" + "<p>Average height: " + response.data.results[0].average_height + " cm </p>" + "<p>Average lifespan: " + response.data.results[0].average_lifespan + " years </p>";
 
             speciesInputField.value = "";
+            speech();
+
+            }
         })
-}
+    }
 
 /* ---------------------------------------------------------------
 SPECIES SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
@@ -184,10 +205,11 @@ SPECIES SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
 
     searchSpecies.addEventListener('click', function () {
         if (speciesInputField.value !== "") {
-            apiCallSpecies();
-            speech();
+            apiCallSpecies();            
         } else {
             pleaseEnterSearch();
+            speciesInputField.value = "";
+            return false;
         }
     })
 
@@ -230,13 +252,21 @@ function apiCallPlanets() {
     axios.get(planetsUrl + queryPlanets)
         .then(function (response) {
 
+            if (response.data.count !== 1) {
+
+                dataNotFound(); 
+                apiResponseDiv.style.opacity = 0;
+                planetInputField.value = "";
+            } else {
+
             apiResponseDiv.innerHTML = "<p>Climate: " + response.data.results[0].climate + " </p>" + "<p>Terrain: " + response.data.results[0].terrain + " </p>" +
                 "<p>Population: " + response.data.results[0].population + " </p>" + "<p>Diameter: " + response.data.results[0].diameter + " km </p>" + "<p>Rotation period: " + response.data.results[0].average_lifespan + " hours </p>";
 
             planetInputField.value = "";
-
+            speech();
+            }
         })
-}
+    }
 
 /* ---------------------------------------------------------------
 PLANET SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
@@ -245,11 +275,11 @@ PLANET SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
     searchPlanets.addEventListener('click', function () {
 
         if (planetInputField.value !== "") {
-            apiCallPlanets();
-            speech();
+            apiCallPlanets();            
 
         } else {
             pleaseEnterSearch();
+            planetInputField.value = "";
             return false
         }
     })
@@ -293,12 +323,21 @@ function apiCallStarships() {
     axios.get(starshipsUrl + queryStarships)
         .then(function (response) {
 
+            if (response.data.count !== 1) {
+
+                dataNotFound(); 
+                apiResponseDiv.style.opacity = 0;
+                starshipInputField.value = "";
+            } else {
+
             apiResponseDiv.innerHTML = "<p>Cargo capacity: " + response.data.results[0].cargo_capacity + " kg </p>" + "<p>Manufacturer: " + response.data.results[0].manufacturer + " </p>" +
                 "<p>Passengers: " + response.data.results[0].passengers + " </p>" + "<p>Cost: " + response.data.results[0].cost_in_credits + " credits </p>" + "<p>Length: " + response.data.results[0].length + " meters </p>" + "<p>Model: " + response.data.results[0].model + " </p>";
 
             starshipInputField.value = "";
+            speech();
+            }
         })
-}
+    }
 
 /* ---------------------------------------------------------------
 STARSHIP SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
@@ -308,10 +347,11 @@ STARSHIP SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
 
         if (starshipInputField.value !== "") {
             apiCallStarships();
-            speech();
+            
 
         } else {
             pleaseEnterSearch();
+            starshipInputField.value = "";
             return false
         }
     });
@@ -354,12 +394,21 @@ function apiCallVehicles() {
     axios.get(vehicleUrl + queryVehicles)
         .then(function (response) {
 
+            if (response.data.count !== 1) {
+
+                dataNotFound();
+                apiResponseDiv.style.opacity = 0; 
+                vehicleInputField.value = "";
+            } else {
+
             apiResponseDiv.innerHTML = "<p>Cargo capacity: " + response.data.results[0].cargo_capacity + " kg </p>" + "<p>Manufacturer: " + response.data.results[0].manufacturer + " </p>" +
                 "<p>Passengers: " + response.data.results[0].passengers + " </p>" + "<p>Cost: " + response.data.results[0].cost_in_credits + " credits </p>" + "<p>Length: " + response.data.results[0].length + " meters </p>" + "<p>Model: " + response.data.results[0].model + " </p>";
 
             vehicleInputField.value = "";
+            speech();
+            }
         })
-}
+    }
 
 /* ---------------------------------------------------------------
 VEHICLE SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
@@ -368,11 +417,11 @@ VEHICLE SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
     searchVehicles.addEventListener('click', function () {
 
         if (vehicleInputField.value !== "") {
-            apiCallVehicles();
-            speech();
+            apiCallVehicles();            
 
         } else {
             pleaseEnterSearch();
+            vehicleInputField.value = "";
             return false
         }
     });
@@ -415,12 +464,20 @@ function apiCallFilms() {
 
     axios.get(filmUrl + queryFilms)
         .then(function (response) {
+            if (response.data.count !== 1) {
+
+                dataNotFound();
+                apiResponseDiv.style.opacity = 0; 
+                filmInputField.value = "";
+            } else {
 
             apiResponseDiv.innerHTML = "<p>Release date: " + response.data.results[0].release_date + " </p>" + "<p>Created: " + response.data.results[0].created + " </p>" + "<p>Producer: " + response.data.results[0].producer + " </p>" + "<p>Director: " + response.data.results[0].director + " </p>" + "<p>Episode: " + response.data.results[0].episode_id + " </p>";
 
             filmInputField.value = "";
+            speech();
+            }
         })
-}
+    }
 
 /* ---------------------------------------------------------------
 FILM SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
@@ -429,11 +486,11 @@ FILM SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
     searchFilms.addEventListener('click', function () {
 
         if (filmInputField.value !== "") {
-            apiCallFilms();
-            speech();
+            apiCallFilms();            
 
         } else {
             pleaseEnterSearch();
+            filmInputField.value = "";
             return false
         }
     });
