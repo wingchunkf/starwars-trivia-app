@@ -1,45 +1,65 @@
 var apiDiv = document.querySelector('.api-container');
 var mainContent = document.querySelector('.main-content');
-var charStatButton = document.querySelector('.char-stats');
-var speciesStatButton = document.querySelector('.species-stats');
-var planetsStatButton = document.querySelector('.planet-stats');
-var starshipsStatButton = document.querySelector('.starship-stats');
-var vehicleStatButton = document.querySelector('.vehicle-stats');
-var filmStatButton = document.querySelector('.film-stats');
 var divWrap = document.querySelector('.wrapper');
 var iconSection = document.querySelector('.sw-icon-section');
 var apiResponseDiv = document.querySelector('.api-response');
-var charInput = document.querySelector('.charInput');
-var searchButtonSpecies = document.querySelector('.searchButtonSpecies');
-var searchButtonPlanets = document.querySelector('.searchButtonPlanets');
-var searchButtonStarships = document.querySelector('.searchButtonStarships')
-var searchButtonVehicles = document.querySelector('.searchButtonVehicles');
-var searchButtonFilms = document.querySelector('.searchButtonFilms');
-var speciesInput = document.querySelector('.speciesInput');
-var apiResponseChar = document.querySelector('.api-response');
-var planetInput = document.querySelector('.planetInput');
-var starshipInput = document.querySelector('.starshipInput');
 var newSection = document.querySelector('.new-section');
 var divWrap = document.querySelector('.wrapper');
+var inputs = document.getElementsByClassName('searchCharInput');
+var placeholder = document.querySelector('input::placeholder');
 var rumble = new Audio('sound/rumbleshort.wav');
+
+/* ---------------------------------------------------------------
+REPLACES HOME PAGE WITH API SEARCH PAGE
+--------------------------------------------------------------- */
 
 function removeMain() {
     rumble.pause();
     mainContent.style.display = "none";
     apiDiv.classList.add('fadeIn');
     apiDiv.style.opacity = 1;
-    apiDiv.style.height = "50rem"; 
+    apiDiv.style.height = "50rem";
     iconSection.style.display = "none";
     divWrap.classList.remove('move-up');
 }
 
-function swapDivs() {  
+/* ---------------------------------------------------------------
+FADES IN API RESPONSE DIV
+--------------------------------------------------------------- */
+
+function swapDivs() {
     mainContent.classList.add('fadeOut');
     apiDiv.classList.add('fadeIn');
-    console.log('what is happening?');
 }
 
-// ***** question and answer fade in *****
+/* ---------------------------------------------------------------
+GIVES AUDITORY RESPONSE TO USER INPUT OR LACK OF USER INPUT
+--------------------------------------------------------------- */
+
+function speech() {
+    setTimeout(function () {
+        var speech = new SpeechSynthesisUtterance("Retrieving data");
+        speechSynthesis.speak(speech);
+    }, 400);
+}
+
+function dataNotFound() {
+    setTimeout(function () {
+        var speech = new SpeechSynthesisUtterance("Sorry, no data found");
+        speechSynthesis.speak(speech);
+    }, 200);
+}
+
+function pleaseEnterSearch() {
+    setTimeout(function () {
+        var speech = new SpeechSynthesisUtterance("Please enter search query");
+        speechSynthesis.speak(speech);
+    }, 200);
+}
+
+/* ---------------------------------------------------------------
+FADES IN SW TRIVIA QUESTION AND ANSWER SECTION
+--------------------------------------------------------------- */
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -51,54 +71,17 @@ document.addEventListener('DOMContentLoaded', function () {
     var thirdAnswer = document.querySelector('.answer3');
     var questions = document.querySelector('.question-section');
     var questionsAnswers = [firstQuestion, secondQuestion, thirdQuestion, firstAnswer, secondAnswer, thirdAnswer];
- 
-  
+    var transitionDelay = [firstQuestion, secondQuestion, thirdQuestion, firstAnswer, secondAnswer, thirdAnswer];
 
     (function FadingIn(array, item) {
         questionsAnswers.forEach(function (item) {
-            item.classList.add('fadeIn');         
-                setTimeout(function () {                 
-                    divWrap.classList.add('move-up');                    
-                    rumble.play();
-                }, 8000);       
-            })
+            item.classList.add('fadeIn');
+            setTimeout(function () {
+                divWrap.classList.add('move-up');
+                rumble.play();
+            }, 8000);
         })
-    ();
-
-    planetsStatButton.addEventListener("click", function () {       
-        swapDivs();
-        setTimeout(removeMain, 1500);
-
-        planetInput.style.display = "block";
-        searchButtonPlanets.style.display = "block"
-    });
-
-    starshipsStatButton.addEventListener("click", function () {   
-        swapDivs();
-        setTimeout(removeMain, 1500);
-        var starshipInput = document.querySelector('.starshipInputField');
-        starshipInput.style.display = "block";
-        searchButtonStarships.style.display = 'block';
-    });
-
-    vehicleStatButton.addEventListener("click", function () {        
-        console.log('vehicle button clicked')
-        swapDivs();
-        setTimeout(removeMain, 1500);
-        var vehicleInput = document.querySelector('.vehicleInput');
-        vehicleInput.style.display = "block";
-        searchButtonVehicles.style.display = "block";
-    });
-
-    filmStatButton.addEventListener("click", function () {        
-        swapDivs();
-        setTimeout(removeMain, 1500);
-        var filmInput = document.querySelector('.filmInput');
-        filmInput.style.display = "block";
-        searchButtonFilms.style.display = "block";
-    });
-
-    var transitionDelay = [firstQuestion, secondQuestion, thirdQuestion, firstAnswer, secondAnswer, thirdAnswer];
+    })();   
 
     firstQuestion.style.transitionDelay = "0.75s";
     secondQuestion.style.transitionDelay = "1.50s";
@@ -109,222 +92,371 @@ document.addEventListener('DOMContentLoaded', function () {
     questions.style.transitionDelay = "6s";
     questions.classList.add('fadeOut');
 
-    // *****  API CALLS *****
-
-    // ***** Search by character *****
+/* ---------------------------------------------------------------
+API CALL BY CHARACTER
+--------------------------------------------------------------- */
+    var charInputField = document.querySelector('.charInput');        
+    var searchChar = document.querySelector('.searchButtonChar');
+    var charInputField = document.querySelector('.charInput');    
+    var charStatButton = document.querySelector('.char-stats');
 
     function apiCallChar() {
-        console.log('is this working yet?')
-        var charSearchInput = charInput.value;
-        console.log(charSearchInput)
-        var peopleUrl = "https://swapi.co/api/people/";
-        var queryChar = '?search=' + charSearchInput;
 
-   
-    
+        var userSearchChar = charInputField.value;
+        var peopleUrl = "https://swapi.co/api/people/";
+        var queryChar = '?search=' + userSearchChar;
+
         axios.get(peopleUrl + queryChar)
-            .then(function (response) {
-                console.log(response);
-              
-                apiResponseChar.innerHTML = "<p>Full name: " + response.data.results[0].name + " </p>" + "<p>Birth year: " + response.data.results[0].birth_year + " </p>" +
+            .then(function (response) {                
+
+                apiResponseDiv.innerHTML = "<p>Full name: " + response.data.results[0].name + " </p>" + "<p>Birth year: " + response.data.results[0].birth_year + " </p>" +
                     "<p>Eye color: " + response.data.results[0].eye_color + " </p>" + "<p>Skin color: " + response.data.results[0].skin_color + " </p>" + "<p>Hair color: " + response.data.results[0].hair_color + " </p>" +
                     "<p>Height: " + response.data.results[0].height + " cm </p>";
 
-                charInput.value = "";
+                charInputField.value = "";
             })
     }
+/* --------------------------------------------------------------
+CHARACTER SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
+--------------------------------------------------------------- */
 
+        searchChar.addEventListener('click', function () {
+        
+            if (charInputField.value !== "") {
+                apiCallChar();
+                speech();
+            } else {
+                pleaseEnterSearch();
+            }
+        })
 
-    document.querySelector('.searchButtonChar').addEventListener('click', function () {     
-        if (charInput.value !== "") {           
-        apiCallChar();
+/* ---------------------------------------------------------------
+INPUT FIELD EVENT LISTENER THAT TRIGGERS CALL WHEN ENTER KEY PRESSED
+--------------------------------------------------------------- */
 
-        setTimeout(function () {
-            var speech = new SpeechSynthesisUtterance("Retrieving data");
-            speechSynthesis.speak(speech);
-        }, 400);
-    } else {
-        alert('please enter search query')
-    }
+        charInputField.addEventListener('keyup', function (event) {
+            if (event.which === 13 && charInputField.value !== "") {
+                searchChar.click();
+            }
+        })
+
+    /* ---------------------------------------------------------------
+CHARACTER STAT BUTTON EVENT LISTENER - TRANSITIONS TO API RESPONSE PAGE
+--------------------------------------------------------------- */
+
+        charStatButton.addEventListener("click", function () {   
+            
+            swapDivs();
+            setTimeout(removeMain, 1500);
+            searchChar.style.display = "block";
+            charInputField.style.display = "block";
+            starshipInputField.style.display = "none";
+        });
     })
 
-    
+/* ---------------------------------------------------------------
+API CALL BY SPECIES
+--------------------------------------------------------------- */
 
-    // trigger api call when user hits enter key
+var speciesStatButton = document.querySelector('.species-stats');
+var speciesInputField = document.querySelector('.speciesInput');
+var searchSpecies = document.querySelector('.searchButtonSpecies');
 
-    charInput.addEventListener('keyup', function (event) {
+function apiCallSpecies() {
 
-        if (event.which === 13) {
-            console.log('hey')      
-            apiCallChar();
-            setTimeout(function () {
-                var speech = new SpeechSynthesisUtterance("Retrieving data");
-                speechSynthesis.speak(speech);
-            }, 400);
+    var userSearchSpecies = speciesInputField.value;
+    var querySpecies = '?search=' + userSearchSpecies;
+    var speciesUrl = "https://swapi.co/api/species/";
 
+    axios.get(speciesUrl + querySpecies)
+        .then(function (response) {
+
+            apiResponseDiv.innerHTML = "<p>Designation: " + response.data.results[0].designation + " </p>" + "<p>Classification: " + response.data.results[0].classification + " </p>" +
+                "<p>Language: " + response.data.results[0].language + " </p>" + "<p>Average height: " + response.data.results[0].average_height + " cm </p>" + "<p>Average lifespan: " + response.data.results[0].average_lifespan + " years </p>";
+
+            speciesInputField.value = "";
+        })
+}
+
+/* ---------------------------------------------------------------
+SPECIES SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
+--------------------------------------------------------------- */
+
+    searchSpecies.addEventListener('click', function () {
+        if (speciesInputField.value !== "") {
+            apiCallSpecies();
+            speech();
+        } else {
+            pleaseEnterSearch();
         }
     })
 
-    charStatButton.addEventListener("click", function () {
-        console.log('is fade in class being added?')    
+/* ---------------------------------------------------------------
+INPUT FIELD EVENT LISTENER THAT TRIGGERS CALL WHEN ENTER KEY PRESSED
+--------------------------------------------------------------- */
+
+    speciesInputField.addEventListener('keyup', function (event) {
+        if (event.which === 13 && speciesInputField.value !== "") {
+            searchSpecies.click();
+        }
+    })
+
+/* ---------------------------------------------------------------
+SPECIES STAT BUTTON EVENT LISTENER - TRANSITIONS TO API RESPONSE PAGE
+--------------------------------------------------------------- */
+
+    speciesStatButton.addEventListener("click", function () {
         swapDivs();
         setTimeout(removeMain, 1500);
-        var charSearchButton = document.querySelector('.searchButtonChar');
-        charSearchButton.style.display = "block";
-        charInput.style.display = "block"
+        searchSpecies.style.display = "block";
+        speciesInputField.style.display = "block";
+        starshipInputField.style.display = "none";
     });
-})
 
+/* ---------------------------------------------------------------
+API CALL BY PLANET
+--------------------------------------------------------------- */
 
+var planetsStatButton = document.querySelector('.planet-stats');
+var planetInputField = document.querySelector('.planetInput');
+var searchPlanets = document.querySelector('.searchButtonPlanets');
 
-    // ***** Search by species ******
+function apiCallPlanets() {
 
-    function apiCallSpecies() {
-        var speciesInputValue = $(speciesInput).val();
-        var querySpecies = '?search=' + speciesInputValue;
-        var speciesUrl = "https://swapi.co/api/species/";
+    var userSearchPlanets = planetInputField.value;
+    var queryPlanets = '?search=' + userSearchPlanets;
+    var planetsUrl = "https://swapi.co/api/planets/";
 
-        axios.get(speciesUrl + querySpecies)
-            .then(function (response) {
-                console.log(response);
-                console.log(speciesInput);
-                console.log(querySpecies)
+    axios.get(planetsUrl + queryPlanets)
+        .then(function (response) {
 
-                apiResponseChar.innerHTML = "<p>Designation: " + response.data.results[0].designation + " </p>" + "<p>Classification: " + response.data.results[0].classification + " </p>" +
-                    "<p>Language: " + response.data.results[0].language + " </p>" + "<p>Average height: " + response.data.results[0].average_height + " cm </p>" + "<p>Average lifespan: " + response.data.results[0].average_lifespan + " years </p>";
+            apiResponseDiv.innerHTML = "<p>Climate: " + response.data.results[0].climate + " </p>" + "<p>Terrain: " + response.data.results[0].terrain + " </p>" +
+                "<p>Population: " + response.data.results[0].population + " </p>" + "<p>Diameter: " + response.data.results[0].diameter + " km </p>" + "<p>Rotation period: " + response.data.results[0].average_lifespan + " hours </p>";
 
-                speciesInput.value = "";
-            })
-    }
+            planetInputField.value = "";
 
-    searchButtonSpecies.addEventListener('click', function () {
-    
-        apiCallSpecies();   
-        setTimeout(function () {
-            var speech = new SpeechSynthesisUtterance("Retrieving data");
-            speechSynthesis.speak(speech);
-        }, 400);
-    })
+        })
+}
 
+/* ---------------------------------------------------------------
+PLANET SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
+--------------------------------------------------------------- */
 
+    searchPlanets.addEventListener('click', function () {
 
-    speciesInput.addEventListener('keyup', function (event) {
+        if (planetInputField.value !== "") {
+            apiCallPlanets();
+            speech();
 
-        if (event.which === 13) {
-            console.log('hey')       
-            apiCallSpecies();
-            setTimeout(function () {
-                var speech = new SpeechSynthesisUtterance("Retrieving data");
-                speechSynthesis.speak(speech);
-            }, 400);
-
+        } else {
+            pleaseEnterSearch();
+            return false
         }
     })
 
+/* ---------------------------------------------------------------
+INPUT FIELD EVENT LISTENER THAT TRIGGERS CALL WHEN ENTER KEY PRESSED
+--------------------------------------------------------------- */
 
-speciesStatButton.addEventListener("click", function () {
-    swapDivs();
-    setTimeout(removeMain, 1500);
-    searchButtonSpecies.style.display = "block";
-    speciesInput.style.display = "block";
-});
+    planetInputField.addEventListener('keyup', function (event) {
+        if (event.which === 13 && planetInputField.value !== "") {
+            searchPlanets.click();
+        }
+    })
 
-// ***** search by planet *****
+/* ---------------------------------------------------------------
+PLANET STAT BUTTON EVENT LISTENER - TRANSITIONS TO API RESPONSE PAGE
+--------------------------------------------------------------- */
 
+    planetsStatButton.addEventListener("click", function () {
+        swapDivs();
+        setTimeout(removeMain, 1500);
+        searchPlanets.style.display = "block";
+        planetInputField.style.display = "block";
+        starshipInputField.style.display = "none";
+    });
 
+/* ---------------------------------------------------------------
+API CALL STARSHIPS
+--------------------------------------------------------------- */
 
-// document.querySelector('.searchButtonSpecies').addEventListener('click', function () {
+var starshipsStatButton = document.querySelector('.starship-stats');
+var starshipInputField = document.querySelector('.starshipInput');
+var searchStarships = document.querySelector('.searchButtonStarships');
 
+function apiCallStarships() {
 
-document.querySelector('.searchButtonPlanets').addEventListener('click', function () {
-
-
-    var planetSearchInput = $(planetInput).val();
-    console.log(planetSearchInput)
-    var planetsInput = planetSearchInput;
-    var queryPlanets = '?search=' + planetsInput;
-    var planetsUrl = "https://swapi.co/api/planets/";
-    var apiResponsePlanets = document.querySelector('.api-response-species');
-    var planetSearchButton = document.querySelector('.searchPlanets');
-    console.log(planetInput)
-    axios.get(planetsUrl + queryPlanets)
-        .then(function (response) {
-            console.log(planetSearchInput)
-            console.log(response);
-
-
-            apiResponseChar.innerHTML = "<p>Climate: " + response.data.results[0].climate + " </p>" + "<p>Terrain: " + response.data.results[0].terrain + " </p>" +
-                "<p>Population: " + response.data.results[0].population + " </p>" + "<p>Diameter: " + response.data.results[0].diameter + " km </p>" + "<p>Rotation period: " + response.data.results[0].average_lifespan + " hours </p>";
-
-
-        })
-})
-
-searchButtonStarships.addEventListener('click', function () {
-
-    var starshipSearchInput = document.querySelector('.starshipInputField').value;
-    console.log(starshipSearchInput)
-    var starshipInput = starshipSearchInput;
-    var queryStarships = '?search=' + starshipInput;
+    var userSearchStarships = starshipInputField.value;
+    var queryStarships = '?search=' + userSearchStarships;
     var starshipsUrl = "https://swapi.co/api/starships/";
-    // var apiResponsePlanets = document.querySelector('.api-response-species');
-
 
     axios.get(starshipsUrl + queryStarships)
         .then(function (response) {
-            console.log(response);
 
-
-
-            apiResponseChar.innerHTML = "<p>Cargo capacity: " + response.data.results[0].cargo_capacity + " kg </p>" + "<p>Manufacturer: " + response.data.results[0].manufacturer + " </p>" +
+            apiResponseDiv.innerHTML = "<p>Cargo capacity: " + response.data.results[0].cargo_capacity + " kg </p>" + "<p>Manufacturer: " + response.data.results[0].manufacturer + " </p>" +
                 "<p>Passengers: " + response.data.results[0].passengers + " </p>" + "<p>Cost: " + response.data.results[0].cost_in_credits + " credits </p>" + "<p>Length: " + response.data.results[0].length + " meters </p>" + "<p>Model: " + response.data.results[0].model + " </p>";
 
-            starshipInput.value = "";
+            starshipInputField.value = "";
         })
-})
+}
 
-searchButtonVehicles.addEventListener('click', function () {
+/* ---------------------------------------------------------------
+STARSHIP SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
+--------------------------------------------------------------- */
 
-    var vehicleSearchInput = document.querySelector('.vehicleInput').value;
-    console.log(vehicleSearchInput)
-    var vehicleInput = vehicleSearchInput;
-    var queryVehicles = '?search=' + vehicleInput;
+    searchStarships.addEventListener('click', function () {
+
+        if (starshipInputField.value !== "") {
+            apiCallStarships();
+            speech();
+
+        } else {
+            pleaseEnterSearch();
+            return false
+        }
+    });
+
+/* ---------------------------------------------------------------
+INPUT FIELD EVENT LISTENER THAT TRIGGERS CALL WHEN ENTER KEY PRESSED
+--------------------------------------------------------------- */
+
+    starshipInputField.addEventListener('keyup', function (event) {
+        if (event.which === 13 && starshipInputField.value !== "") {
+            searchStarships.click();
+        }
+    });
+
+/* ---------------------------------------------------------------
+STARSHIP STAT BUTTON EVENT LISTENER - TRANSITIONS TO API RESPONSE PAGE
+--------------------------------------------------------------- */
+
+    starshipsStatButton.addEventListener("click", function () {
+        swapDivs();
+        setTimeout(removeMain, 1500);
+        starshipInputField.style.display = "block";    
+        searchStarships.style.display = 'block';
+    });
+
+/* ---------------------------------------------------------------
+API CALL VEHICLES
+--------------------------------------------------------------- */
+
+var vehicleStatButton = document.querySelector('.vehicle-stats');
+var vehicleInputField = document.querySelector('.vehicleInput');
+var searchVehicles = document.querySelector('.searchButtonVehicles');
+
+function apiCallVehicles() {
+
+    var userSearchVehicles = vehicleInputField.value;
+    var queryVehicles = '?search=' + userSearchVehicles;
     var vehicleUrl = "https://swapi.co/api/vehicles/";
-    // var apiResponsePlanets = document.querySelector('.api-response-species');
-
 
     axios.get(vehicleUrl + queryVehicles)
         .then(function (response) {
-            console.log(response);
 
+            apiResponseDiv.innerHTML = "<p>Cargo capacity: " + response.data.results[0].cargo_capacity + " kg </p>" + "<p>Manufacturer: " + response.data.results[0].manufacturer + " </p>" +
+                "<p>Passengers: " + response.data.results[0].passengers + " </p>" + "<p>Cost: " + response.data.results[0].cost_in_credits + " credits </p>" + "<p>Length: " + response.data.results[0].length + " meters </p>" + "<p>Model: " + response.data.results[0].model + " </p>";
 
-            apiResponseChar.innerHTML = "<p>Model: " + response.data.results[0].model + " kg </p>" + "<p>Manufacturer: " + response.data.results[0].manufacturer + " </p>" + "<p>Passengers: " + response.data.results[0].passengers + " </p>" + "<p>Cost: " + response.data.results[0].cost_in_credits + " credits </p>" + "<p>Maximum speed: " + response.data.results[0].max_atmosphering_speed + " kph </p>" +
-                "<p>Crew: " + response.data.results[0].crew + " </p>";
-            console.log(vehicleSearchInput.value)
-            vehicleSearchInput.value = "";
+            vehicleInputField.value = "";
         })
-})
+}
 
+/* ---------------------------------------------------------------
+VEHICLE SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
+--------------------------------------------------------------- */
 
-searchButtonFilms.addEventListener('click', function () {
+    searchVehicles.addEventListener('click', function () {
 
-    var filmSearchInput = document.querySelector('.filmInput').value;
-    console.log(filmSearchInput)
-    var filmInput = filmSearchInput;
-    var queryFilms = '?search=' + filmInput;
+        if (vehicleInputField.value !== "") {
+            apiCallVehicles();
+            speech();
+
+        } else {
+            pleaseEnterSearch();
+            return false
+        }
+    });
+
+/* ---------------------------------------------------------------
+INPUT FIELD EVENT LISTENER THAT TRIGGERS CALL WHEN ENTER KEY PRESSED
+--------------------------------------------------------------- */
+
+    vehicleInputField.addEventListener('keyup', function (event) {
+        if (event.which === 13 && vehicleInputField.value !== "") {
+            searchVehicles.click();
+        }
+    });
+
+/* ---------------------------------------------------------------
+VEHICLE STAT BUTTON EVENT LISTENER - TRANSITIONS TO API RESPONSE PAGE
+--------------------------------------------------------------- */
+
+    vehicleStatButton.addEventListener("click", function () {
+        swapDivs();
+        setTimeout(removeMain, 1500);
+        vehicleInputField.style.display = "block";
+        starshipInputField.style.display = "none";
+        searchVehicles.style.display = 'block';
+    });
+
+/* ---------------------------------------------------------------
+API CALL FILMS
+--------------------------------------------------------------- */
+
+var filmStatButton = document.querySelector('.film-stats');
+var filmInputField = document.querySelector('.filmInput');
+var searchFilms = document.querySelector('.searchButtonFilms');
+
+function apiCallFilms() {
+
+    var userSearchFilms = filmInputField.value;
+    var queryFilms = '?search=' + userSearchFilms;
     var filmUrl = "https://swapi.co/api/films/";
-    // var apiResponsePlanets = document.querySelector('.api-response-species');
-
 
     axios.get(filmUrl + queryFilms)
         .then(function (response) {
-            console.log(response);
 
+            apiResponseDiv.innerHTML = "<p>Release date: " + response.data.results[0].release_date + " </p>" + "<p>Created: " + response.data.results[0].created + " </p>" + "<p>Producer: " + response.data.results[0].producer + " </p>" + "<p>Director: " + response.data.results[0].director + " </p>" + "<p>Episode: " + response.data.results[0].episode_id + " </p>";
 
-            apiResponseChar.innerHTML = "<p>Release date: " + response.data.results[0].release_date + " </p>" + "<p>Created: " + response.data.results[0].created + " </p>" + "<p>Producer: " + response.data.results[0].producer + " </p>" + "<p>Director: " + response.data.results[0].director + " </p>" + "<p>Episode: " + response.data.results[0].episode_id + " </p>";
-
-            filmSearchInput.value = "";
+            filmInputField.value = "";
         })
-})
+}
 
+/* ---------------------------------------------------------------
+FILM SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
+--------------------------------------------------------------- */
 
+    searchFilms.addEventListener('click', function () {
+
+        if (filmInputField.value !== "") {
+            apiCallFilms();
+            speech();
+
+        } else {
+            pleaseEnterSearch();
+            return false
+        }
+    });
+
+/* ---------------------------------------------------------------
+INPUT FIELD EVENT LISTENER THAT TRIGGERS CALL WHEN ENTER KEY PRESSED
+--------------------------------------------------------------- */
+
+    filmInputField.addEventListener('keyup', function (event) {
+        if (event.which === 13 && filmInputField.value !== "") {
+            searchFilms.click();
+        }
+    });
+
+/* ---------------------------------------------------------------
+FILM STAT BUTTON EVENT LISTENER - TRANSITIONS TO API RESPONSE PAGE
+--------------------------------------------------------------- */
+
+    filmStatButton.addEventListener("click", function () {
+        swapDivs();
+        setTimeout(removeMain, 1500);
+
+        filmInputField.style.display = "block";
+        starshipInputField.style.display = "none";
+        searchFilms.style.display = "block";
+    });
