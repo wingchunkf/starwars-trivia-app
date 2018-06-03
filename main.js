@@ -7,6 +7,8 @@ var newSection = document.querySelector('.new-section');
 var divWrap = document.querySelector('.wrapper');
 var inputs = document.getElementsByClassName('searchCharInput');
 var placeholder = document.querySelector('input::placeholder');
+var homeButton = document.querySelector('.back');
+var homeLink = document.querySelector('a');
 var rumble = new Audio('sound/rumbleshort.wav');
 
 /* ---------------------------------------------------------------
@@ -24,12 +26,23 @@ function removeMain() {
 }
 
 /* ---------------------------------------------------------------
+ADDS HOME BUTTON UNDERNEATH API CONTAINER
+--------------------------------------------------------------- */
+
+function showHome() {
+    setTimeout(function() {
+        homeButton.style.opacity = 1; 
+    }, 2000);
+}
+
+/* ---------------------------------------------------------------
 FADES IN API RESPONSE DIV
 --------------------------------------------------------------- */
 
 function swapDivs() {
     mainContent.classList.add('fadeOut');
     apiDiv.classList.add('fadeIn');
+    showHome();
 }
 
 /* ---------------------------------------------------------------
@@ -54,7 +67,7 @@ function pleaseEnterSearch() {
     setTimeout(function () {
         var speech = new SpeechSynthesisUtterance("Please enter search query");
         speechSynthesis.speak(speech);
-    }, 200);
+    }, 200);    
 }
 
 /* ---------------------------------------------------------------
@@ -181,7 +194,7 @@ function apiCallSpecies() {
 
     axios.get(speciesUrl + querySpecies)
         .then(function (response) {
-
+            console.log(response)
             if (response.data.count !== 1) {
 
                 dataNotFound(); 

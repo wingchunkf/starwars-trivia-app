@@ -42,12 +42,6 @@ h1:hover {
     transform: scale(1.1);
 }
 
-// .move-up {
-//     animation: move 8s;
-//     animation-fill-mode: forwards;
-//     animation-direction: normal;
-// }
-
 @keyframes move {
     0%, 100% {
     transform: translate(0, 0);    
@@ -186,8 +180,6 @@ input.searchCharInput{
     text-align: center;
 }
 
-.searchCharInput:focus::-webkit-input-placeholder, 
-
 .searchCharInput:focus::-webkit-input-placeholder { 
     color:transparent; 
 }
@@ -242,6 +234,21 @@ button.btn.btn-lg:hover {
 
 button.btn.btn-lg.back {
     padding: 10px 30px;
+    opacity: 0;
+}
+
+a {
+    color: white;
+    text-decoration: none;   
+}
+
+a:hover {
+    color: $green-blue-med;
+    text-decoration: none;
+}
+    
+i.fas.fa-home {
+    margin-right: 1rem;
 }
 
 .api-container {
@@ -333,5 +340,3 @@ footer .contact-info a:hover {
     bottom: 10px;
     position: absolute;    
 }
-
-
