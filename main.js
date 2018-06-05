@@ -42,6 +42,7 @@ FADES IN API RESPONSE DIV
 function swapDivs() {
     mainContent.classList.add('fadeOut');
     apiDiv.classList.add('fadeIn');
+    rumble.pause();
     showHome();
 }
 
