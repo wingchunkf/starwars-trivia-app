@@ -20,7 +20,7 @@ function removeMain() {
     mainContent.style.display = "none";
     apiDiv.classList.add('fadeIn');
     apiDiv.style.opacity = 1;
-    apiDiv.style.height = "50rem";
+    apiDiv.style.height = "46rem";
     iconSection.style.display = "none";
     divWrap.classList.remove('move-up');
 }
@@ -92,9 +92,14 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(function () {
                 divWrap.classList.add('move-up');
                 rumble.play();
-            }, 8000);
-        })
-    })();   
+                }, 8000);
+            })
+        })(); 
+    
+    var mq = window.matchMedia('all and (max-width: 768px)');
+        if(mq.matches) {
+            iconSection.style.display = "block";                    
+        }
 
     firstQuestion.style.transitionDelay = "0.75s";
     secondQuestion.style.transitionDelay = "1.50s";
@@ -150,6 +155,7 @@ CHARACTER SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
             } else {
                 pleaseEnterSearch();
                 charInputField.value = "";
+                apiResponseDiv.classList.add('fadeOut');
                 return false;
             }
         })
@@ -193,8 +199,7 @@ function apiCallSpecies() {
     var speciesUrl = "https://swapi.co/api/species/";
 
     axios.get(speciesUrl + querySpecies)
-        .then(function (response) {
-            console.log(response)
+        .then(function (response) {            
             if (response.data.count !== 1) {
 
                 dataNotFound(); 
@@ -222,6 +227,7 @@ SPECIES SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
         } else {
             pleaseEnterSearch();
             speciesInputField.value = "";
+            apiResponseDiv.classList.add('fadeOut');
             return false;
         }
     })
@@ -231,7 +237,7 @@ INPUT FIELD EVENT LISTENER THAT TRIGGERS CALL WHEN ENTER KEY PRESSED
 --------------------------------------------------------------- */
 
     speciesInputField.addEventListener('keyup', function (event) {
-        if (event.which === 13 && speciesInputField.value !== "") {
+        if (event.which === 13 && speciesInputField.value !== "") {            
             searchSpecies.click();
         }
     })
@@ -275,8 +281,8 @@ function apiCallPlanets() {
             apiResponseDiv.innerHTML = "<p>Climate: " + response.data.results[0].climate + " </p>" + "<p>Terrain: " + response.data.results[0].terrain + " </p>" +
                 "<p>Population: " + response.data.results[0].population + " </p>" + "<p>Diameter: " + response.data.results[0].diameter + " km </p>" + "<p>Rotation period: " + response.data.results[0].average_lifespan + " hours </p>";
 
-            planetInputField.value = "";
             speech();
+            planetInputField.value = "";
             }
         })
     }
@@ -293,6 +299,7 @@ PLANET SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
         } else {
             pleaseEnterSearch();
             planetInputField.value = "";
+            apiResponseDiv.classList.add('fadeOut');
             return false
         }
     })
@@ -302,8 +309,9 @@ INPUT FIELD EVENT LISTENER THAT TRIGGERS CALL WHEN ENTER KEY PRESSED
 --------------------------------------------------------------- */
 
     planetInputField.addEventListener('keyup', function (event) {
-        if (event.which === 13 && planetInputField.value !== "") {
+        if (event.which === 13 && planetInputField.value !== "") {            
             searchPlanets.click();
+            
         }
     })
 
@@ -337,7 +345,7 @@ function apiCallStarships() {
         .then(function (response) {
 
             if (response.data.count !== 1) {
-
+                console.log(response)
                 dataNotFound(); 
                 apiResponseDiv.style.opacity = 0;
                 starshipInputField.value = "";
@@ -365,6 +373,7 @@ STARSHIP SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
         } else {
             pleaseEnterSearch();
             starshipInputField.value = "";
+            apiResponseDiv.classList.add('fadeOut');
             return false
         }
     });
@@ -435,6 +444,7 @@ VEHICLE SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
         } else {
             pleaseEnterSearch();
             vehicleInputField.value = "";
+            apiResponseDiv.classList.add('fadeOut');
             return false
         }
     });
@@ -504,6 +514,7 @@ FILM SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
         } else {
             pleaseEnterSearch();
             filmInputField.value = "";
+            apiResponseDiv.classList.add('fadeOut');
             return false
         }
     });

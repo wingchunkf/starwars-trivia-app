@@ -1,26 +1,39 @@
+/* -------------------------
+SCSS VARIABLES
+------------------------- */
 * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased; }
 
+body {
+  margin-right: -15px;
+  padding-right: 0; }
+
+/* -------------------------
+            HEADER
+------------------------- */
 header {
   background: #257ca3;
   background-size: cover;
   color: white;
-  margin-right: -15px;
-  margin-left: -15px;
   font-family: 'Ubuntu', sans-serif;
-  height: 15rem; }
+  height: 15rem;
+  margin-left: -15px;
+  margin-right: -15px; }
 
 h1 {
-  transition: all 0.4s ease-in-out;
+  color: #f7f7f7;
+  font-size: 4rem;
   -moz-transition: all 0.4s ease-in-out;
-  font-size: 80px;
-  color: #f7f7f7; }
+  transition: all 0.4s ease-in-out; }
 
 h1:hover {
   -moz-transform: scale(1.1);
   transform: scale(1.1); }
 
+/* -------------------------
+    SW TRIVIA QUESTIONS
+------------------------- */
 @keyframes move {
   0%, 100% {
     transform: translate(0, 0); }
@@ -28,13 +41,14 @@ h1:hover {
     transform: translate(0, -200px); } }
 
 .question1, .question2, .question3 {
-  opacity: 0;
   color: #708090;
+  opacity: 0;
   padding: 1.25rem 0;
   width: 50%; }
 
 .question1 p, .question2 p, .question3 p {
-  font-size: 110%; }
+  font-size: 110%;
+  color: #257ca3; }
 
 .answer1, .answer2, .answer3 {
   opacity: 0; }
@@ -43,10 +57,10 @@ h1:hover {
   width: 3rem; }
 
 .fadeIn {
-  opacity: 1;
-  -webkit-opacity: 1;
   -moz-opacity: 1;
-  transition: opacity 2.25s ease-in-out; }
+  opacity: 1;
+  transition: opacity 2.25s ease-in-out;
+  -webkit-opacity: 1; }
 
 .fadeOut {
   opacity: 0;
@@ -54,16 +68,19 @@ h1:hover {
 
 .move-up {
   animation: move 5.9s;
-  animation-fill-mode: forwards;
-  animation-direction: normal; }
+  animation-direction: normal;
+  animation-fill-mode: forwards; }
 
+/* -------------------------
+    SEARCH CATEGORIES
+------------------------- */
 .main-content {
   position: relative;
   z-index: 1; }
 
 .div1row1, .div2row1, .div3row1, .div1row2, .div2row2, .div3row2 {
-  height: 24rem;
-  box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.2); }
+  box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.2);
+  height: 24rem; }
 
 .characters {
   background-image: url(../img/yoda.png);
@@ -96,16 +113,50 @@ h1:hover {
 .characters:hover, .starships:hover, .planets:hover, .vehicles:hover, .films:hover, .species:hover {
   transform: scale(1.2); }
 
+button.char-stats.btn.btn-lg, button.api-call.btn.btn-lg, button.back.btn.btn-lg {
+  background: #257ca3;
+  border-radius: 0;
+  color: #f7f7f7;
+  font-family: 'Ubuntu', sans-serif;
+  margin-top: 3rem;
+  opacity: 1;
+  transition: background-color 0.5s;
+  -webkit-transition: background-color 0.5s; }
+
+button.get-stats.btn.btn-lg:hover, button.api-call.btn.btn-lg:hover, button.btn.btn-lg.back:hover {
+  background: #f7f7f7;
+  border: 1px solid #257ca3;
+  color: #257ca3; }
+
+/* -------------------------
+    API SEARCH PAGE
+------------------------- */
 h3 {
   box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.2);
   color: #708090; }
 
 input.searchCharInput {
-  opacity: 1;
-  padding: 0.5rem;
-  margin-top: 3rem;
   font-family: 'Ubuntu';
-  font-size: 110%; }
+  font-size: 110%;
+  margin-top: 3rem;
+  opacity: 1;
+  padding: 1rem 0.5rem; }
+
+button.btn.btn-lg {
+  background: #257ca3;
+  border-radius: 0;
+  color: #f7f7f7;
+  font-family: 'Ubuntu', sans-serif;
+  margin-top: 3rem;
+  opacity: 1;
+  transition: background-color 0.5s;
+  -webkit-transition: background-color 0.5s; }
+
+button.btn.btn-lg:hover {
+  background: #f7f7f7;
+  border: 1px solid #257ca3;
+  color: #257ca3;
+  outline: none; }
 
 .charInput, .speciesInput, .planetInput, .starshipInputField, .vehicleInput, .filmInput, .searchButtonChar, .searchButtonPlanets, .searchButtonSpecies, .searchButtonStarships, .searchButtonVehicles, .searchButtonFilms {
   display: none; }
@@ -146,43 +197,12 @@ input.searchCharInput {
 .searchCharInput:focus:-ms-input-placeholder {
   color: transparent; }
 
-button.char-stats.btn.btn-lg, button.api-call.btn.btn-lg, button.back.btn.btn-lg {
-  border-radius: 0;
-  opacity: 1;
-  margin-top: 3rem;
-  background: #257ca3;
-  color: #f7f7f7;
-  font-family: 'Ubuntu', sans-serif;
-  -webkit-transition: background-color 0.5s;
-  transition: background-color 0.5s; }
-
-button.get-stats.btn.btn-lg:hover, button.api-call.btn.btn-lg:hover, button.btn.btn-lg.back:hover {
-  background: #f7f7f7;
-  color: #257ca3;
-  border: 1px solid #257ca3; }
-
 button.btn.btn-lg.back {
   padding: 10px 30px; }
 
-button.btn.btn-lg {
-  border-radius: 0;
-  opacity: 1;
-  margin-top: 3rem;
-  background: #257ca3;
-  color: #f7f7f7;
-  font-family: 'Ubuntu', sans-serif;
-  -webkit-transition: background-color 0.5s;
-  transition: background-color 0.5s; }
-
-button.btn.btn-lg:hover {
-  background: #f7f7f7;
-  color: #257ca3;
-  border: 1px solid #257ca3;
-  outline: none; }
-
 button.btn.btn-lg.back {
-  padding: 10px 30px;
-  opacity: 0; }
+  opacity: 0;
+  padding: 10px 30px; }
 
 a {
   color: white;
@@ -192,43 +212,39 @@ a:hover {
   color: #257ca3;
   text-decoration: none; }
 
-i.fas.fa-home {
-  margin-right: 1rem; }
-
 .api-container {
   background-image: url(../img/xwingfaded.jpg);
   background-size: cover;
+  height: 0;
+  margin-left: -15px;
+  margin-right: -15px;
   opacity: 0;
   position: relative;
-  z-index: 999;
-  height: 0;
-  margin-right: -15px;
-  margin-left: -15px; }
+  z-index: 999; }
 
 .data-div {
-  height: 40rem;
   box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.3);
   height: 0; }
 
 .api-response {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.3rem;
   line-height: 2.8;
   text-align: center;
-  text-justify: left;
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 1.3rem; }
+  text-justify: left; }
 
 .api-response p {
-  overflow: hidden;
-  border-right: .15em solid transparent;
-  white-space: nowrap;
-  margin: 0 auto;
-  letter-spacing: .15em;
   animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+  border-right: .15em solid transparent;
+  box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.3);
   color: black;
   font-weight: bold;
-  box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.3);
+  letter-spacing: .15em;
+  margin: 0 auto;
+  overflow: hidden;
   position: relative;
-  padding: 1rem 0; }
+  padding: 1rem 0;
+  white-space: nowrap; }
 
 @keyframes typing {
   from {
@@ -242,34 +258,29 @@ i.fas.fa-home {
   50% {
     border-color: transparent; } }
 
-.home-link {
-  position: absolute;
-  bottom: 1.25rem;
-  text-align: center;
-  color: #f7f7f7; }
-
+/* -------------------------
+          FOOTER
+------------------------- */
 footer {
   background-color: #257ca3;
   color: white;
-  height: 20rem;
+  height: 25rem;
   margin-left: -15px;
   margin-right: -15px;
-  width: 100%;
-  position: relative; }
+  margin-bottom: 0;
+  position: relative;
+  width: 100%; }
 
 footer p {
   font-size: 110%; }
 
-footer p.paul {
-  font-size: 100%; }
-
 footer .contact-info a {
-  text-decoration: none;
-  color: white; }
+  color: white;
+  text-decoration: none; }
 
 footer .contact-info a:hover {
   opacity: 0.6; }
 
 .copyright {
-  bottom: 10px;
+  bottom: 5px;
   position: absolute; }
