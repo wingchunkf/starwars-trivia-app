@@ -15,14 +15,16 @@ $white: #f7f7f7;
 }
 
 body {
-    margin-right: -15px;
-    padding-right: 0;    
+    margin-left: -15px;
+    margin-right: -15px; 
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 @mixin vertical-align($position: relative) {
-    position: $position;
-    top: 50%;    
     -ms-transform: translateY(-50%);
+    position: $position;
+    top: 50%;       
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
 }
@@ -36,9 +38,9 @@ header {
     background-size: cover;   
     color: white;   
     font-family: 'Ubuntu', sans-serif; 
-    height: 15rem; 
+    min-height: 15rem; 
     margin-left: -15px; 
-    margin-right: -15px;  
+    margin-right: -15px;      
 }
 
 h1 {
@@ -51,6 +53,27 @@ h1 {
 h1:hover {
     -moz-transform: scale(1.1);
     transform: scale(1.1);
+}
+
+/* -------------------------
+LISTS OF SEARCHABLE ITEMS
+------------------------- */
+
+.character-list, .species-list, .planet-list, .starship-list, .vehicle-list, .film-list {
+    display: none;
+    padding: 2rem;    
+}
+
+.character-list p, .species-list p, .planet-list p, .starship-list p, .vehicle-list p, .film-list p {
+    transition: all 0.2s ease-in-out; 
+}
+
+.film-list p {
+    font-size: 120%;    
+}
+
+.character-list p:hover, .species-list p:hover, .planet-list p:hover, .starship-list p:hover, .vehicle-list p:hover, .film-list p:hover {
+    transform: scale(1.3);
 }
 
 /* -------------------------
@@ -74,8 +97,8 @@ h1:hover {
 }
 
 .question1 p, .question2 p, .question3 p {
-    font-size: 110%;
     color: $green-blue-med;
+    font-size: 110%;  
 }
 
 .answer1, .answer2, .answer3 {

@@ -6,8 +6,10 @@ SCSS VARIABLES
   -webkit-font-smoothing: antialiased; }
 
 body {
+  margin-left: -15px;
   margin-right: -15px;
-  padding-right: 0; }
+  padding-left: 0px;
+  padding-right: 0px; }
 
 /* -------------------------
             HEADER
@@ -17,7 +19,7 @@ header {
   background-size: cover;
   color: white;
   font-family: 'Ubuntu', sans-serif;
-  height: 15rem;
+  min-height: 15rem;
   margin-left: -15px;
   margin-right: -15px; }
 
@@ -30,6 +32,22 @@ h1 {
 h1:hover {
   -moz-transform: scale(1.1);
   transform: scale(1.1); }
+
+/* -------------------------
+LISTS OF SEARCHABLE ITEMS
+------------------------- */
+.character-list, .species-list, .planet-list, .starship-list, .vehicle-list, .film-list {
+  display: none;
+  padding: 2rem; }
+
+.character-list p, .species-list p, .planet-list p, .starship-list p, .vehicle-list p, .film-list p {
+  transition: all 0.2s ease-in-out; }
+
+.film-list p {
+  font-size: 120%; }
+
+.character-list p:hover, .species-list p:hover, .planet-list p:hover, .starship-list p:hover, .vehicle-list p:hover, .film-list p:hover {
+  transform: scale(1.3); }
 
 /* -------------------------
     SW TRIVIA QUESTIONS
@@ -47,8 +65,8 @@ h1:hover {
   width: 50%; }
 
 .question1 p, .question2 p, .question3 p {
-  font-size: 110%;
-  color: #257ca3; }
+  color: #257ca3;
+  font-size: 110%; }
 
 .answer1, .answer2, .answer3 {
   opacity: 0; }

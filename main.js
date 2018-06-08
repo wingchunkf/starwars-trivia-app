@@ -9,21 +9,25 @@ var inputs = document.getElementsByClassName('searchCharInput');
 var placeholder = document.querySelector('input::placeholder');
 var homeButton = document.querySelector('.back');
 var homeLink = document.querySelector('a');
-var rumble = new Audio('sound/rumbleshort.wav');
+var title = document.querySelector('.app-title');
+var footer = document.querySelector('.sw-footer');
 
 /* ---------------------------------------------------------------
 REPLACES HOME PAGE WITH API SEARCH PAGE
 --------------------------------------------------------------- */
 
-function removeMain() {
-    rumble.pause();
+function removeMain() {    
     mainContent.style.display = "none";
     apiDiv.classList.add('fadeIn');
     apiDiv.style.opacity = 1;
-    apiDiv.style.height = "46rem";
+    apiDiv.style.height = "56rem";
     iconSection.style.display = "none";
-    divWrap.classList.remove('move-up');
-}
+    divWrap.classList.remove('move-up');   
+    window.history.pushState(null, "", window.location.href);        
+    window.onpopstate = function() {
+        window.history.pushState(null, "", window.location.href);
+        }   
+    }
 
 /* ---------------------------------------------------------------
 ADDS HOME BUTTON UNDERNEATH API CONTAINER
@@ -31,9 +35,13 @@ ADDS HOME BUTTON UNDERNEATH API CONTAINER
 
 function showHome() {
     setTimeout(function() {
-        homeButton.style.opacity = 1; 
+        homeButton.style.opacity = 1;         
     }, 2000);
 }
+
+    homeButton.addEventListener("click", function () {
+        document.location.reload()
+    });
 
 /* ---------------------------------------------------------------
 FADES IN API RESPONSE DIV
@@ -41,8 +49,7 @@ FADES IN API RESPONSE DIV
 
 function swapDivs() {
     mainContent.classList.add('fadeOut');
-    apiDiv.classList.add('fadeIn');
-    rumble.pause();
+    apiDiv.classList.add('fadeIn');    
     showHome();
 }
 
@@ -87,13 +94,14 @@ document.addEventListener('DOMContentLoaded', function () {
     var questionsAnswers = [firstQuestion, secondQuestion, thirdQuestion, firstAnswer, secondAnswer, thirdAnswer];
     var transitionDelay = [firstQuestion, secondQuestion, thirdQuestion, firstAnswer, secondAnswer, thirdAnswer];
 
+    title.style.display = "block";
+
     (function FadingIn(array, item) {
         questionsAnswers.forEach(function (item) {
             item.classList.add('fadeIn');
             setTimeout(function () {
-                divWrap.classList.add('move-up');
-                rumble.play();
-                }, 8000);
+                divWrap.classList.add('move-up');               
+                }, 8000);               
             })
         })(); 
     
@@ -141,9 +149,10 @@ API CALL BY CHARACTER
 
                         speech();
                         charInputField.value = "";
+                        apiResponseDiv.style.opacity = 1;
                 }
             })                  
-    }
+        }
 /* --------------------------------------------------------------
 CHARACTER SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
 --------------------------------------------------------------- */
@@ -175,13 +184,20 @@ INPUT FIELD EVENT LISTENER THAT TRIGGERS CALL WHEN ENTER KEY PRESSED
 CHARACTER STAT BUTTON EVENT LISTENER - TRANSITIONS TO API RESPONSE PAGE
 --------------------------------------------------------------- */
 
-        charStatButton.addEventListener("click", function () {   
-            
+        charStatButton.addEventListener("click", function () {            
+
             swapDivs();
-            setTimeout(removeMain, 1500);
+            setTimeout(removeMain, 1500);          
+            footer.style.display = "none";
             searchChar.style.display = "block";
             charInputField.style.display = "block";
             starshipInputField.style.display = "none";
+            title.style.display = "none";
+            setTimeout(function() {
+                var nameList = document.querySelector('.character-list');
+                nameList.style.display = "block";
+                $(document).scrollTop(0);
+            }, 1800)        
         });
     })
 
@@ -210,10 +226,10 @@ function apiCallSpecies() {
 
             apiResponseDiv.innerHTML = "<p>Designation: " + response.data.results[0].designation + " </p>" + "<p>Classification: " + response.data.results[0].classification + " </p>" +
                 "<p>Language: " + response.data.results[0].language + " </p>" + "<p>Average height: " + response.data.results[0].average_height + " cm </p>" + "<p>Average lifespan: " + response.data.results[0].average_lifespan + " years </p>";
-
-            speciesInputField.value = "";
+            
             speech();
-
+            speciesInputField.value = "";
+            apiResponseDiv.style.opacity = 1;           
             }
         })
     }
@@ -250,9 +266,17 @@ SPECIES STAT BUTTON EVENT LISTENER - TRANSITIONS TO API RESPONSE PAGE
     speciesStatButton.addEventListener("click", function () {
         swapDivs();
         setTimeout(removeMain, 1500);
+        
+        footer.style.display = "none";
         searchSpecies.style.display = "block";
         speciesInputField.style.display = "block";
         starshipInputField.style.display = "none";
+        title.style.display = "none";      
+        setTimeout(function() {    
+            var speciesList = document.querySelector('.species-list');
+            speciesList.style.display = "block";
+            $(document).scrollTop(0)
+            }, 1800);
     });
 
 /* ---------------------------------------------------------------
@@ -281,9 +305,10 @@ function apiCallPlanets() {
 
             apiResponseDiv.innerHTML = "<p>Climate: " + response.data.results[0].climate + " </p>" + "<p>Terrain: " + response.data.results[0].terrain + " </p>" +
                 "<p>Population: " + response.data.results[0].population + " </p>" + "<p>Diameter: " + response.data.results[0].diameter + " km </p>" + "<p>Rotation period: " + response.data.results[0].average_lifespan + " hours </p>";
-
+            
             speech();
             planetInputField.value = "";
+            apiResponseDiv.style.opacity = 1;
             }
         })
     }
@@ -301,7 +326,7 @@ PLANET SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
             pleaseEnterSearch();
             planetInputField.value = "";
             apiResponseDiv.classList.add('fadeOut');
-            return false
+            return false;
         }
     })
 
@@ -311,8 +336,7 @@ INPUT FIELD EVENT LISTENER THAT TRIGGERS CALL WHEN ENTER KEY PRESSED
 
     planetInputField.addEventListener('keyup', function (event) {
         if (event.which === 13 && planetInputField.value !== "") {            
-            searchPlanets.click();
-            
+            searchPlanets.click();            
         }
     })
 
@@ -322,10 +346,17 @@ PLANET STAT BUTTON EVENT LISTENER - TRANSITIONS TO API RESPONSE PAGE
 
     planetsStatButton.addEventListener("click", function () {
         swapDivs();
-        setTimeout(removeMain, 1500);
+        setTimeout(removeMain, 1500);  
+        footer.style.display = "none";
         searchPlanets.style.display = "block";
         planetInputField.style.display = "block";
-        starshipInputField.style.display = "none";
+        starshipInputField.style.display = "none";     
+        title.style.display = "none";
+        setTimeout(function() {             
+            var planetList = document.querySelector('.planet-list');
+            planetList.style.display = "block";
+            $(document).scrollTop(0);
+            }, 1800);  
     });
 
 /* ---------------------------------------------------------------
@@ -355,8 +386,9 @@ function apiCallStarships() {
             apiResponseDiv.innerHTML = "<p>Cargo capacity: " + response.data.results[0].cargo_capacity + " kg </p>" + "<p>Manufacturer: " + response.data.results[0].manufacturer + " </p>" +
                 "<p>Passengers: " + response.data.results[0].passengers + " </p>" + "<p>Cost: " + response.data.results[0].cost_in_credits + " credits </p>" + "<p>Length: " + response.data.results[0].length + " meters </p>" + "<p>Model: " + response.data.results[0].model + " </p>";
 
-            starshipInputField.value = "";
             speech();
+            starshipInputField.value = "";
+            apiResponseDiv.style.opacity = 1;          
             }
         })
     }
@@ -375,7 +407,7 @@ STARSHIP SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
             pleaseEnterSearch();
             starshipInputField.value = "";
             apiResponseDiv.classList.add('fadeOut');
-            return false
+            return false;
         }
     });
 
@@ -395,9 +427,16 @@ STARSHIP STAT BUTTON EVENT LISTENER - TRANSITIONS TO API RESPONSE PAGE
 
     starshipsStatButton.addEventListener("click", function () {
         swapDivs();
-        setTimeout(removeMain, 1500);
+        setTimeout(removeMain, 1500);     
+        footer.style.display = "none";
         starshipInputField.style.display = "block";    
         searchStarships.style.display = 'block';
+        title.style.display = "none";
+        setTimeout(function() {             
+            var starshipList = document.querySelector('.starship-list');
+            starshipList.style.display = "block";
+            $(document).scrollTop(0);
+            }, 1800);  
     });
 
 /* ---------------------------------------------------------------
@@ -426,9 +465,10 @@ function apiCallVehicles() {
 
             apiResponseDiv.innerHTML = "<p>Cargo capacity: " + response.data.results[0].cargo_capacity + " kg </p>" + "<p>Manufacturer: " + response.data.results[0].manufacturer + " </p>" +
                 "<p>Passengers: " + response.data.results[0].passengers + " </p>" + "<p>Cost: " + response.data.results[0].cost_in_credits + " credits </p>" + "<p>Length: " + response.data.results[0].length + " meters </p>" + "<p>Model: " + response.data.results[0].model + " </p>";
-
-            vehicleInputField.value = "";
+            
             speech();
+            vehicleInputField.value = "";
+            apiResponseDiv.style.opacity = 1;           
             }
         })
     }
@@ -446,7 +486,7 @@ VEHICLE SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
             pleaseEnterSearch();
             vehicleInputField.value = "";
             apiResponseDiv.classList.add('fadeOut');
-            return false
+            return false;
         }
     });
 
@@ -464,12 +504,19 @@ INPUT FIELD EVENT LISTENER THAT TRIGGERS CALL WHEN ENTER KEY PRESSED
 VEHICLE STAT BUTTON EVENT LISTENER - TRANSITIONS TO API RESPONSE PAGE
 --------------------------------------------------------------- */
 
-    vehicleStatButton.addEventListener("click", function () {
+    vehicleStatButton.addEventListener("click", function () {        
         swapDivs();
-        setTimeout(removeMain, 1500);
+        setTimeout(removeMain, 1500);    
+        footer.style.display = "none";
         vehicleInputField.style.display = "block";
         starshipInputField.style.display = "none";
         searchVehicles.style.display = 'block';
+        title.style.display = "none";
+        setTimeout(function() {             
+            var vehicleList = document.querySelector('.vehicle-list');
+            vehicleList.style.display = "block";
+            $(document).scrollTop(0);
+            }, 1800);
     });
 
 /* ---------------------------------------------------------------
@@ -495,10 +542,11 @@ function apiCallFilms() {
                 filmInputField.value = "";
             } else {
 
-            apiResponseDiv.innerHTML = "<p>Release date: " + response.data.results[0].release_date + " </p>" + "<p>Created: " + response.data.results[0].created + " </p>" + "<p>Producer: " + response.data.results[0].producer + " </p>" + "<p>Director: " + response.data.results[0].director + " </p>" + "<p>Episode: " + response.data.results[0].episode_id + " </p>";
-
-            filmInputField.value = "";
+            apiResponseDiv.innerHTML = "<p>Release date: " + response.data.results[0].release_date + " </p>" + "<p>Producer: " + response.data.results[0].producer + " </p>" + "<p>Director: " + response.data.results[0].director + " </p>" + "<p>Episode: " + response.data.results[0].episode_id + " </p>";
+                
             speech();
+            filmInputField.value = "";
+            apiResponseDiv.style.opacity = 1;
             }
         })
     }
@@ -516,7 +564,7 @@ FILM SEARCH BUTTON EVENT LISTENER - CALLS API FUNCTION
             pleaseEnterSearch();
             filmInputField.value = "";
             apiResponseDiv.classList.add('fadeOut');
-            return false
+            return false;
         }
     });
 
@@ -536,9 +584,15 @@ FILM STAT BUTTON EVENT LISTENER - TRANSITIONS TO API RESPONSE PAGE
 
     filmStatButton.addEventListener("click", function () {
         swapDivs();
-        setTimeout(removeMain, 1500);
-
+        setTimeout(removeMain, 1500);      
+        footer.style.display = "none";
         filmInputField.style.display = "block";
         starshipInputField.style.display = "none";
         searchFilms.style.display = "block";
+        title.style.display = "none";
+        setTimeout(function() {             
+            var filmList = document.querySelector('.film-list');
+            filmList.style.display = "block";
+            $(document).scrollTop(0);
+            }, 1800);
     });
