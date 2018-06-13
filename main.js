@@ -23,10 +23,10 @@ function removeMain() {
     apiDiv.style.height = "56rem";
     iconSection.style.display = "none";
     divWrap.classList.remove('move-up');   
-    window.history.pushState(null, "", window.location.href);        
-    window.onpopstate = function() {
-        window.history.pushState(null, "", window.location.href);
-        }   
+    // window.history.pushState(null, "", window.location.href);        
+    // window.onpopstate = function() {
+    //     window.history.pushState(null, "", window.location.href);
+    //     }   
     }
 
 /* ---------------------------------------------------------------
