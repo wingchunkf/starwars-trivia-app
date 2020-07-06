@@ -130,7 +130,7 @@ API CALL BY CHARACTER
     function apiCallChar() {
 
         var userSearchChar = charInputField.value;
-        var peopleUrl = "https://swapi.co/api/people/";
+        var peopleUrl = "https://swapi.dev/api/people/";
         var queryChar = '?search=' + userSearchChar;
         
         axios.get(peopleUrl + queryChar)
